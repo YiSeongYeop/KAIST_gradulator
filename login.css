@@ -57,7 +57,7 @@ input:focus {outline:none;}
 }
 
 #LOGIN_boxes {
-	width: 220px;
+	width: 100%;
   	margin: auto;
 
   	animation: fadein 2s;
@@ -93,6 +93,10 @@ input:focus {outline:none;}
 	font-size:14px;
 	text-align: left;
 	color:white;
+}
+
+.page {
+    display: inline-block;
 }
 
 .github {
