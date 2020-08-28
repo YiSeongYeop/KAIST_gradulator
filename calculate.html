@@ -16,8 +16,12 @@
 	<h1>
 		KAIST GRADULATOR
 	</h1>
-
-	<input type="file" id="excelFile" value="엑셀 추가" onchange="excelExport(event)"/>
-
+	<div id="inputs">
+		<div class="filebox">
+			<input class="upload-name" value="파일선택" disabled="disabled"> 
+			<label for="ex_filename">업로드</label> 
+			<input multiple="multiple" type="file" id="ex_filename" class="upload-hidden" name="filename[]" accept=".xlsx, .xls, .csv"> 
+		</div>
+	</div>
 </body>
 </html>
