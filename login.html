@@ -48,7 +48,7 @@ DEALINGS IN THE SOFTWARE.
 			<input type="text" id="ID_input" onkeydown="if (event.keyCode == 13) login_form.PW_input.focus();" placeholder="ID"/>
 		</div>
 		<div>
-			<input type="text" id="PW_input" onkeydown="if (event.keyCode == 13) login_form.submit();" placeholder="PASSWORD"/>
+			<input type="text" id="PW_input" onkeydown="if (event.keyCode == 13) {login_check();}" placeholder="PASSWORD"/>
 		</div>
 	</div>
 	</form>
