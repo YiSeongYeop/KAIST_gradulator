@@ -1,0 +1,108 @@
+body {
+  background-color: #1b212c;
+}
+
+h1 {
+	font-family:08서울남산체;
+	font-size:48px;
+	text-align: center;
+	color:white;
+
+	margin-top: 230px;
+
+    transition-property: margin-top;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+@keyframes fadeout {
+    from {
+        opacity:1;
+    }
+    to {
+        opacity:0;
+    }
+}
+@-moz-keyframes fadeout { /* Firefox */
+    from {
+        opacity:1;
+    }
+    to {
+        opacity:0;
+    }
+}
+@-webkit-keyframes fadeout { /* Safari and Chrome */
+    from {
+        opacity:1;
+    }
+    to {
+        opacity:0;
+    }
+}
+@-o-keyframes fadeout { /* Opera */
+    from {
+        opacity:1;
+    }
+    to {
+        opacity:0;
+    }
+}
+
+#LOGIN_boxes {
+	width: 220px;
+  	margin: auto;
+
+  	animation: fadeout 1s;
+    -moz-animation: fadeout 1s; /* Firefox */
+    -webkit-animation: fadeout 1s; /* Safari and Chrome */
+    -o-animation: fadeout 1s; /* Opera */
+}
+
+#ID_input {
+	border-radius: 18px;
+    background: #7c7c7c;
+    padding: 10px; 
+    width: 200px;
+    height: 15px; 
+    margin-bottom: 10px;
+
+	font-family:08서울남산체;
+	font-size:14px;
+	text-align: left;
+	color:white;
+}
+
+#PW_input {
+	border-radius: 18px;
+    background: #7c7c7c;
+    padding: 10px; 
+    width: 200px;
+    height: 15px; 
+
+	font-family:08서울남산체;
+	font-size:14px;
+	text-align: left;
+	color:white;
+}
+
+#test2 {
+    margin-top: 100px;
+    font-family:08서울남산체;
+    font-size:14px;
+    text-align: left;
+    color:white;
+}
+
+#test2.up {
+    margin-top: 10px;
+    font-family:08서울남산체;
+    font-size:14px;
+    text-align: left;
+    color:white;
+}
