@@ -2,6 +2,8 @@
 <html lang="kr">
 <head>
 	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="icon" href="favicon.ico" type="image/x-icon" />
 	<title>Document</title>
 	<link rel="stylesheet" href="login.css">
 	<style></style>
@@ -11,16 +13,16 @@
 	<h1>
 		KAIST GRADULATOR
 	</h1>
+	<form action = "file:///C:/Users/닭다리/Desktop/KAIST_gradulator/calculate.html" accept-charset="utf-8" 
+              name = "login_form" method = "get"> 
 	<div id="LOGIN_boxes">
 		<div>
-			<input type="text" id="ID_input" placeholder="ID"/>
+			<input type="text" id="ID_input" onkeydown="if (event.keyCode == 13) login_form.PW_input.focus();" placeholder="ID"/>
 		</div>
 		<div>
-			<input type="text" id="PW_input" placeholder="PASSWORD"/>
+			<input type="text" id="PW_input" onkeydown="if (event.keyCode == 13) login_form.submit();" placeholder="PASSWORD"/>
 		</div>
 	</div>
-	<button id="test1" type="button" onClick="location.href='calculate.html'">
-		for developing		
-	</button>
+	</form>
 </body>
 </html>

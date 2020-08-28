@@ -21,6 +21,8 @@ h1 {
   opacity: 1; /* Firefox */
 }
 
+input:focus {outline:none;}
+
 @keyframes fadeout {
     from {
         opacity:1;
@@ -57,11 +59,13 @@ h1 {
 #LOGIN_boxes {
 	width: 220px;
   	margin: auto;
-
+    display: none;
+/*
   	animation: fadeout 1s;
-    -moz-animation: fadeout 1s; /* Firefox */
-    -webkit-animation: fadeout 1s; /* Safari and Chrome */
-    -o-animation: fadeout 1s; /* Opera */
+    -moz-animation: fadeout 1s;
+    -webkit-animation: fadeout 1s;
+    -o-animation: fadeout 1s;
+*/
 }
 
 #ID_input {
@@ -90,7 +94,7 @@ h1 {
 	text-align: left;
 	color:white;
 }
-
+/*
 #test2 {
     margin-top: 100px;
     font-family:08서울남산체;
@@ -106,3 +110,4 @@ h1 {
     text-align: left;
     color:white;
 }
+*/
