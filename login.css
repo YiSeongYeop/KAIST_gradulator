@@ -90,3 +90,17 @@ h1 {
 	text-align: left;
 	color:white;
 }
+
+#test1 {
+	border-radius: 18px;
+    background: #7c7c7c;
+    padding: 10px; 
+    width: 200px;
+    height: 15px; 
+    margin-bottom: 10px;
+
+	font-family:08서울남산체;
+	font-size:14px;
+	text-align: left;
+	color:white;
+}
