@@ -10,3 +10,40 @@ h1 {
 
 	margin-top: 230px;
 }
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+#LOGIN_boxes {
+	width: 220px;
+  	margin: auto;
+}
+
+#ID_input {
+	border-radius: 18px;
+    background: #7c7c7c;
+    padding: 10px; 
+    width: 200px;
+    height: 15px; 
+    margin-bottom: 10px;
+
+	font-family:08서울남산체;
+	font-size:14px;
+	text-align: left;
+	color:white;
+}
+
+#PW_input{
+	border-radius: 18px;
+    background: #7c7c7c;
+    padding: 10px; 
+    width: 200px;
+    height: 15px; 
+
+	font-family:08서울남산체;
+	font-size:14px;
+	text-align: left;
+	color:white;
+}
