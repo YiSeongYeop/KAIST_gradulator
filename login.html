@@ -41,18 +41,15 @@ DEALINGS IN THE SOFTWARE.
 	<h1>
 		KAIST GRADULATOR
 	</h1>
-	<form onsubmit="login_check()" accept-charset="utf-8" 
+	<form action="file:///C:/Users/%EB%8B%AD%EB%8B%A4%EB%A6%AC/Desktop/KAIST_gradulator/calculate.html" accept-charset="utf-8" 
               name = "login_form" method = "get"> 
 	<div id="LOGIN_boxes">
 		<div>
 			<input type="text" id="ID_input" onkeydown="if (event.keyCode == 13) login_form.PW_input.focus();" placeholder="ID"/>
 		</div>
 		<div>
-			<input type="text" id="PW_input" onkeydown="if (event.keyCode == 13) login_form.submit()" placeholder="PASSWORD"/>
+			<input type="text" id="PW_input" onkeydown="if (event.keyCode == 13) login_check();" placeholder="PASSWORD"/>
 		</div>
-    <div>
-      <input type="submit" id="submit" value="log in"/>
-    </div>
 	</div>
 	</form>
 	</div>
