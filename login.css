@@ -81,7 +81,7 @@ input:focus {outline:none;}
 	color:white;
 }
 
-#PW_input{
+#PW_input {
 	border-color: #AAAAAA;
 	border-width: 1px;
     background: #121212;
@@ -93,4 +93,12 @@ input:focus {outline:none;}
 	font-size:14px;
 	text-align: left;
 	color:white;
+}
+
+.github {
+	border-color: #AAAAAA;
+	border-width: 1px;
+    background: white; 
+    width: 30px;
+    height: 30px; 
 }

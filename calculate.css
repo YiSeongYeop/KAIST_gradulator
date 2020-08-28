@@ -8,12 +8,12 @@ h1 {
 	text-align: center;
 	color:white;
 
-	margin-top: 230px;
+    animation: fadein 2s;
+    -moz-animation: fadein 2s; /* Firefox */
+    -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -o-animation: fadein 2s; /* Opera */
 
-    transition-property: margin-top;
-    transition-duration: 1s;
-    transition-timing-function: ease-in-out;
-
+	margin-top: 0px;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -23,91 +23,35 @@ h1 {
 
 input:focus {outline:none;}
 
-@keyframes fadeout {
+@keyframes fadein {
     from {
-        opacity:1;
-    }
-    to {
         opacity:0;
     }
-}
-@-moz-keyframes fadeout { /* Firefox */
-    from {
+    to {
         opacity:1;
     }
-    to {
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
         opacity:0;
     }
-}
-@-webkit-keyframes fadeout { /* Safari and Chrome */
-    from {
+    to {
         opacity:1;
     }
-    to {
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
         opacity:0;
     }
-}
-@-o-keyframes fadeout { /* Opera */
-    from {
+    to {
         opacity:1;
     }
-    to {
+}
+@-o-keyframes fadein { /* Opera */
+    from {
         opacity:0;
     }
+    to {
+        opacity: 1;
+    }
 }
-
-#LOGIN_boxes {
-	width: 220px;
-  	margin: auto;
-    display: none;
-/*
-  	animation: fadeout 1s;
-    -moz-animation: fadeout 1s;
-    -webkit-animation: fadeout 1s;
-    -o-animation: fadeout 1s;
-*/
-}
-
-#ID_input {
-	border-radius: 18px;
-    background: #7c7c7c;
-    padding: 10px; 
-    width: 200px;
-    height: 15px; 
-    margin-bottom: 10px;
-
-	font-family:08서울남산체;
-	font-size:14px;
-	text-align: left;
-	color:white;
-}
-
-#PW_input {
-	border-radius: 18px;
-    background: #7c7c7c;
-    padding: 10px; 
-    width: 200px;
-    height: 15px; 
-
-	font-family:08서울남산체;
-	font-size:14px;
-	text-align: left;
-	color:white;
-}
-/*
-#test2 {
-    margin-top: 100px;
-    font-family:08서울남산체;
-    font-size:14px;
-    text-align: left;
-    color:white;
-}
-
-#test2.up {
-    margin-top: 10px;
-    font-family:08서울남산체;
-    font-size:14px;
-    text-align: left;
-    color:white;
-}
-*/
