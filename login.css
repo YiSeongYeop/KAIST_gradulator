@@ -74,7 +74,7 @@ input:focus {outline:none;}
 }
 
 #ID_input {
-	border-color: #AAAAAA;
+	border-color: white;
 	border-width: 1px;
     background: #121212;
     padding: 10px; 
@@ -89,7 +89,7 @@ input:focus {outline:none;}
 }
 
 #PW_input {
-	border-color: #AAAAAA;
+	border-color: white;
 	border-width: 1px;
     background: #121212;
     padding: 10px; 
