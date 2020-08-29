@@ -1,15 +1,11 @@
-//여러 파일 업로드
-$(document).ready(function(){ 
-    var fileTarget = $('.filebox .upload-hidden'); 
-    fileTarget.on('change', function(){ // 값이 변경되면 
-        if(window.FileReader){ // modern browser 
-            var filename = $(this)[0].files[0].name; 
-        } 
-        else { // old IE 
-            var filename = $(this).val().split('/').pop().split('\\').pop();
-         // 파일명만 추출 
+$(document).ready( function() {
+    updateList = function() {
+        var input = document.getElementById('file');
+        var output = document.getElementById('fileList');
+        var children = "";
+        for (var i = 0; i < input.files.length; ++i) {
+            children += '<li>' + input.files.item(i).name + '</li>';
         }
-        // 추출한 파일명 삽입 
-        $(this).siblings('.upload-name').val(filename); 
-    }); 
+        output.innerHTML = '<ul>'+children+'</ul>';
+    }
 });

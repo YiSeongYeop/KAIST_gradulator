@@ -1,5 +1,10 @@
 body {
   background-color: #121212;
+
+  animation: fadein 2s;
+    -moz-animation: fadein 2s; /* Firefox */
+    -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -o-animation: fadein 2s; /* Opera */
 }
 
 h1 {
@@ -7,11 +12,6 @@ h1 {
 	font-size:48px;
 	text-align: center;
 	color:white;
-
-    animation: fadein 2s;
-    -moz-animation: fadein 2s; /* Firefox */
-    -webkit-animation: fadein 2s; /* Safari and Chrome */
-    -o-animation: fadein 2s; /* Opera */
 
 	margin-top: 0px;
 }
@@ -57,45 +57,43 @@ input:focus {outline:none;}
 }
 
 /*file upload*/
-.filebox input[type="file"] { 
-    position: absolute; 
-    width: 1px; 
-    height: 1px; 
-    padding: 0; 
-    margin: -1px; 
-    overflow: hidden; 
-    clip:rect(0,0,0,0); 
-    border: 0; 
-} 
+#fileList {
+    color: white;
+    width: 300px;
+    height: 150px;
+    padding-left:5px;
 
-.filebox label { 
-    display: inline-block; 
-    padding: .5em .75em; 
-    color: white; 
-    font-size: inherit; 
-    line-height: normal; 
-    vertical-align: middle; 
-    background-color: #337ab7; 
-    cursor: pointer; 
-    border: 1px solid #337ab7; 
-    border-radius: .25em; 
-} /* named upload */ 
-
-.filebox .upload-name { 
-    display: inline-block; 
-    padding: .5em .75em; 
-    /* label의 패딩값과 일치 */ 
-    font-size: inherit; 
-    font-family: inherit; 
-    line-height: normal; 
-    vertical-align: middle; 
-    background-color: #f5f5f5; 
-    border: 1px solid #ebebeb; 
-    border-bottom-color: #e2e2e2; 
-    border-radius: .25em; 
-    -webkit-appearance: none; 
-    /* 네이티브 외형 감추기 */ 
-    -moz-appearance: none; 
-    appearance: none; 
+    border: 1px solid gray;
+    overflow: auto;
 }
 
+#selected {
+    font-family: 08서울남산체;
+    font-weight: bold;
+
+    color: white;
+    margin-bottom: 10px;
+}
+
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+.filebox label {
+    font-family: 08서울남산체;
+    font-weight: bold;
+    display: inline-block;
+    padding: 5px 10px;
+    color: black;
+    font-size: 15px;
+    vertical-align: middle;
+    background-color: #fdfdfd;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-radius: 5px;
+}
