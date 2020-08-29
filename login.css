@@ -66,6 +66,7 @@ input:focus {outline:none;}
 #LOGIN_boxes {
 	width: 100%;
   	margin: auto;
+    text-align: center;
 
   	animation: fadein 2s;
     -moz-animation: fadein 2s; /* Firefox */
@@ -100,16 +101,4 @@ input:focus {outline:none;}
 	font-size:14px;
 	text-align: left;
 	color:white;
-}
-
-.page {
-    display: inline-block;
-}
-
-.github {
-	border-color: #AAAAAA;
-	border-width: 1px;
-    background: white; 
-    width: 30px;
-    height: 30px; 
 }

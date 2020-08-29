@@ -24,19 +24,18 @@ excelExport = function() {
 }
 */
 excelExport = function() {
-    var input = event.target;
-    var i,f;
+    let input = event.target;
+    let i,f;
 
     for (i=0; i<input.files.length; ++i) {
         f = input.files[i];
-        var reader = new FileReader();
+        let reader = new FileReader();
         reader.onload = function(){
-            var fileData = reader.result;
-            var wb = XLSX.read(fileData, {type : 'array'});
+            let fileData = reader.result;
+            let wb = XLSX.read(fileData, {type : 'array'});
             wb.SheetNames.forEach(function(sheetName){
-                var rowObj =XLSX.utils.sheet_to_json(wb.Sheets[sheetName]);
+                let rowObj =XLSX.utils.sheet_to_json(wb.Sheets[sheetName]);
                 console.log(JSON.stringify(rowObj));
-                alert(JSON.stringify(rowObj))
             })
         };
         reader.readAsArrayBuffer(f);
