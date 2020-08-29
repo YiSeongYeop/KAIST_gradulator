@@ -194,6 +194,7 @@ input:focus {outline:none;}
 {
      text-decoration:none; 
      cursor:pointer;  
+     background:#121212;
 }
 
 #kaist-img {
@@ -204,5 +205,6 @@ input:focus {outline:none;}
 #kaist-img a:hover 
 {
      text-decoration:none; 
-     cursor:pointer;  
+     cursor:pointer; 
+     background:#121212; 
 }
