@@ -6,11 +6,10 @@
 	<link rel="icon" href="img/favicon.ico" type="image/x-icon" />
 	<title>Document</title>
 
-	<link rel="stylesheet" href="calculate.css">
+	<link rel="stylesheet" href="contact.css">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.6/xlsx.min.js" integrity="sha512-X53zyt2zVcpa26yjS4j4nUzh6bEiymyqZ7zuZk6NoYqwZJcSzrScgtpsN1JPtcdROIhhnhBmtClj7eVe21qjyg==" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="calculate.js"></script>
 </head>
 <body>
 	<h1>
@@ -29,11 +28,26 @@
 		</span>
 	</h1>
 
-    <div class="filebox">
-      <label for="file" color="white">업로드</label>
-      <input type="file" multiple name="file" id="file" accept=".xlsx, .xls, .csv" onchange="updateList(); excelExport();"/>
-      <p id="selected">선택된 파일</p>
-      <div id="fileList"></div>
-    </div>
+	<div id="github">
+		<div id="developer">
+			DEVELOPER
+		</div>
+		<div id="name" class="name">
+			Yi SeongYeop&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Kim JiHun
+		</div>
+		<div id="github-img">
+			<span>
+				<a href="https://github.com/YiSeongYeop" target="_blank"><img draggable="false" src="img/GitHub_Logo_White.png" width="300" height="123"></a>
+			</span>
+			<span>
+				<a href="https://github.com/kjh618" target="_blank"><img draggable="false" src="img/GitHub_Logo_White.png" width="300" height="123"></a>
+			</span>
+		</div>
+		<div id="kaist-img">
+			<span>
+				<a href="https://www.kaist.ac.kr/kr/" target="_blank"><img draggable="false" src="img/kaist_logo_trans(white).png" width="396" height="110"></a>
+			</span>
+		</div>
+	</div>
 </body>
 </html>

@@ -48,16 +48,12 @@ a {
     transition: all 0.5s ease-in-out;
 }
 
-a:hover 
+h1 a:hover 
 {
      color: black; 
      text-decoration:none; 
      cursor:pointer;  
      background: white;
-}
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: white;
-  opacity: 1; /* Firefox */
 }
 
 input:focus {outline:none;}
@@ -95,24 +91,6 @@ input:focus {outline:none;}
     }
 }
 
-/*file upload*/
-#fileList {
-    color: white;
-    width: 300px;
-    height: 150px;
-    padding-left:5px;
-
-    border: 1px solid gray;
-    overflow: auto;
-}
-
-#selected {
-    font-family: 08서울남산체;
-    font-weight: bold;
-    color: white;
-    margin-bottom: 10px;
-}
-
 #logo {
     padding-right: 10px;
     border-right: 1px solid gray;
@@ -135,30 +113,46 @@ input:focus {outline:none;}
 }
 
 #logout a:hover {
+     text-decoration: none; 
+     cursor: pointer;  
+}
+
+#developer {
+    font-family: 08서울남산체;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    margin-left: 15px;
+    margin-bottom: 20px;
+}
+
+.name {
+    text-align: center;
+    font-family: 08서울남산체;
+    font-size: 25px;
+    color: white;
+    padding-top: 90px;
+}
+
+#github-img {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#github-img a:hover 
+{
      text-decoration:none; 
      cursor:pointer;  
 }
 
-.filebox input[type="file"] {
-    position: absolute;
-    width: 0;
-    height: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 0;
+#kaist-img {
+    text-align: center;
+    margin-top: 20px;
 }
 
-.filebox label {
-    font-family: 08서울남산체;
-    font-weight: bold;
-    display: inline-block;
-    padding: 5px 10px;
-    color: black;
-    font-size: 15px;
-    vertical-align: middle;
-    background-color: #fdfdfd;
-    cursor: pointer;
-    border: 1px solid #ebebeb;
-    border-radius: 5px;
+#kaist-img a:hover 
+{
+     text-decoration:none; 
+     cursor:pointer;  
 }
-
