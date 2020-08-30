@@ -24,7 +24,7 @@
 		</span>
 		<span>
 			<span id="otl" class="menu">
-				<a href="https://otl.kaist.ac.kr/main" target="_self">otl</a>
+				<a href="https://otl.kaist.ac.kr/main" target="_blank">otl</a>
 			</span>
 		</span>
 		<span>
@@ -49,16 +49,16 @@
 	    <span class="select-boxes">
     		<span id="ethics-and-safety">
     			<p id="text1">윤리 및 안전</p>
-				<select class="select-input" id="ethics-and-safety" name="ethics-and-safety">
-				    <option value="">선택</option>
+				<select class="select-input" id="ethics-and-safety" name="ethics-and-safety" onchange="selected1()">
+				    <option value="select">선택</option>
 				    <option value="yes">예</option>
 				    <option value="no">아니오</option>
 				</select>
 			</span>
 			<span id="english">
 				<p id="text1">영어 시험 (일반 기준점수/청각장애인 3급이상 기준점수)</p>
-				<select class="select-input" id="english" name="english">
-				    <option value="">선택</option>
+				<select class="select-input" id="english" name="english" onchange="selected2()">
+				    <option value="select">선택</option>
 				    <option value="yes">IBT TOFEL:83/62</option>
 				    <option value="no">PBT TOFEL:560/372</option>
 				    <option value="yes">CBT TOFEL:220/146</option>

@@ -1,3 +1,15 @@
+selected1 = function(e) {
+    //let target = document.getElementById("ethics-and-safety").text
+    let selTxt1 = document.querySelector('select#ethics-and-safety option:checked').text;
+    console.log(selTxt1);
+}
+
+selected2 = function(e) {
+    //let target = document.getElementById("ethics-and-safety").text
+    let selTxt2 = document.querySelector('select#english option:checked').text;
+    console.log(selTxt2);
+}
+
 updateList = function() {
     var input = document.getElementById('file');
     var output = document.getElementById('fileList');

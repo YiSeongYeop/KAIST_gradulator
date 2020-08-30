@@ -186,7 +186,7 @@ input:focus {outline:none;}
 }
 
 #input-area {
-    border-right: 3px solid #d3d3d3; 
+    border-right: 3px double #d3d3d3; 
     width: 470px;
 }
 
@@ -206,6 +206,8 @@ input:focus {outline:none;}
     padding: 5px;
     border: white;
     border-radius: 5px;
+
+    cursor: pointer;
 }
 
 .filebox input[type="file"] {
