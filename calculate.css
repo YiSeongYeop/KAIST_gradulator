@@ -37,6 +37,16 @@ span {
     user-select: none;
 }
 
+footer {
+    color: white;
+    text-align: center;
+
+    position: absolute;
+    bottom: 0;
+    width: 95%;
+    height: 50px;
+}
+
 a {
     color: white;
     text-decoration: none;
@@ -188,6 +198,7 @@ input:focus {outline:none;}
 #input-area {
     border-right: 3px double #d3d3d3; 
     width: 470px;
+    margin: none;
 }
 
 #text1 {
@@ -196,6 +207,17 @@ input:focus {outline:none;}
     color: white;
     width: 410px;
     text-align: center;
+    margin-top: 50px
+}
+
+#result-area {
+    width: 20%;
+}
+
+#text2 {
+    font-family: 08서울남산체;
+    font-weight: bold;
+    color: white;
     margin-top: 50px
 }
 

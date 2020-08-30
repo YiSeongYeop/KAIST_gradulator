@@ -23,12 +23,30 @@ h1 {
     -o-animation: fadein 2s; /* Opera */
 }
 
+footer {
+    color: white;
+    text-align: center;
+
+    position: absolute;
+    bottom: 0;
+    width: 98%;
+    height: 50px;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: white;
   opacity: 1; /* Firefox */
 }
 
 input:focus {outline:none;}
+button:focus {outline:none;}
 
 @keyframes fadein {
     from {
@@ -78,6 +96,7 @@ input:focus {outline:none;}
 #ID_input {
 	border-color: white;
 	border-width: 1px;
+    border-radius: 8px;
     background: #121212;
     padding: 10px; 
     width: 200px;
@@ -93,6 +112,7 @@ input:focus {outline:none;}
 #PW_input {
 	border-color: white;
 	border-width: 1px;
+    border-radius: 8px;
     background: #121212;
     padding: 10px; 
     width: 200px;
@@ -102,4 +122,67 @@ input:focus {outline:none;}
 	font-size:14px;
 	text-align: left;
 	color:white;
+}
+
+#buttons {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    animation: fadein 2s;
+    -moz-animation: fadein 2s; /* Firefox */
+    -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -o-animation: fadein 2s; /* Opera */
+
+    margin-top: 10px;
+    text-align: center;
+}
+
+.sign-button {
+    vertical-align: middle;
+
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #757575;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 15px;
+    padding: 5px;
+    width: 100px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.sign-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.sign-button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.sign-button:hover span {
+  padding-right: 25px;
+}
+
+.sign-button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.sign-button:hover {
+    background: #1e82ff
 }

@@ -1,0 +1,95 @@
+body {
+    background-color: #121212;
+
+    animation: fadein 2s;
+    -moz-animation: fadein 2s; /* Firefox */
+    -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -o-animation: fadein 2s; /* Opera */
+
+    animation: fadein 2s;
+    -moz-animation: fadein 2s; /* Firefox */
+    -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -o-animation: fadein 2s; /* Opera */
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    margin: 20px;
+    margin-top: 25%;
+}
+
+input:focus {outline:none;}
+
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.text {
+	font-family:08서울남산체;
+	font-size:25px;
+	text-align: center;
+	color:white;
+}
+
+#ID_input {
+	text-align: center;
+	margin: auto;
+  	display: block;
+  	width: 200px;
+  	padding: 5px;
+  	border-radius: 8px;
+  	border-color: #121212;
+}
+
+#PW_input {
+	text-align: center;
+	margin: auto;
+  	display: block;
+  	width: 200px;
+  	padding: 5px;
+  	border-radius: 8px;
+  	border-color: #121212;
+}
+
+#EMAIL_input {
+	text-align: center;
+	margin: auto;
+  	display: block;
+  	width: 200px;
+  	padding: 5px;
+  	border-radius: 8px;
+  	border-color: #121212;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+	<link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+	<title>Document</title>
+	<link rel="stylesheet" href="sign-up.css">
+	<script type="text/javascript" src="login.js"></script>
+</head>
+<body>
+	<form action="login.html" autocomplete="off" accept-charset="utf-8" 
+              name = "signup_form" method = "get">
+		<div>
+			<p class="text">ID*</p>
+			<input type="text" id="ID_input" onkeydown="if (event.keyCode == 13) signup_form.PW_input.focus();" placeholder="ID"/>
+		</div>
+		<div>
+			<p class="text">Password*</p>
+			<input type="text" id="PW_input" onkeydown="if (event.keyCode == 13) signup_form.EMAIL_input.focus();" placeholder="PASSWORD"/>
+		</div>
+		<div>
+			<p class="text">Email</p>
+			<input type="text" id="EMAIL_input" onkeydown="if (event.keyCode == 13) signup_check();" placeholder="E-MAIL"/>
+		</div>
+	</form>
+</body>
+</html>
