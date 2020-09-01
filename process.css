@@ -132,57 +132,140 @@ a {
 }
 
 #logout {
-	grid-column: 10 / 12;
-	grid-row: 1 / 1;
+    grid-column: 10 / 12;
+    grid-row: 1 / 1;
 
-	color: #d3d3d3;
-	font-size: 15px;
-	font-weight: bold;
+    color: #d3d3d3;
+    font-size: 15px;
+    font-weight: bold;
 
-	padding: 18px 0px;
+    padding: 18px 0px;
 }
 
 #logout:hover {
     background: #63a080
 }
 
-#developer {
-	grid-column: 1 / 12;
-	grid-row: 2 / 2;
+#file-upload {
+	grid-column: 1 / 7;
+	grid-row: 2 / 7;
 
 	color: #d3d3d3;
-	font-size: 30px;
-	font-weight: bold;
-
-	padding: 18px 0px;
+	padding: 3px;
 }
 
-#lsykjh {
-	grid-column: 1 / 12;
-	grid-row: 3 / 3;
+#english {
+	grid-column: 7 / 12;
+	grid-row: 2 / 4;
 
 	color: #d3d3d3;
-	font-size: 30px;
-	font-weight: bold;
 
-	padding: 18px 0px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
-#lsykjh:hover span {
-	display:none
-}
-
-#lsykjh:hover:before {
-	content:"Yi SeongYeop\00a0\00a0\00a0\00a0\00a0\00a0Kim JiHun"
-}
-
-#github-img {
-	grid-column: 1 / 12;
-	grid-row: 4 / 7;
+#ethics {
+	grid-column: 7 / 12;
+	grid-row: 4 / 6;
 
 	color: #d3d3d3;
-	font-size: 30px;
-	font-weight: bold;
+}
 
-	padding: 30px 0px;
+#submit-button {
+	grid-column: 7 / 12;
+	grid-row: 6 / 7;
+
+	color: #d3d3d3;
+	font-size: 20px;
+	font-weight: bold;
+	cursor: pointer;
+
+    border: 1.5px solid black;
+}
+
+#submit-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#submit-button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+#submit-button:hover span {
+  padding-right: 25px;
+}
+
+#submit-button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+#submit-button:hover {
+    background: #1e82ff
+}
+
+.select-input {
+	background: #4d4d4d;
+
+    color: #d3d3d3;
+
+    width: 200px;
+    text-align: center;
+    padding: 5px;
+    border: white;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+#fileList {
+    color: #d3d3d3;
+    width: 313px;
+    height: 250px;
+
+    margin-bottom: 20px;
+
+    /*border: 1px solid black;*/
+    overflow: auto;
+}
+
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+.filebox label {
+    font-weight: bold;
+    display: inline-block;
+    padding: 5px 10px;
+    color: #d3d3d3;
+    font-size: 15px;
+    vertical-align: middle;
+    background-color: #4d4d4d;
+    width: 250px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 2px solid #4d4d4d;
+    margin-bottom: 10px;
+    margin-top: 5px;
+
+    transition: all 0.5s;
+}
+
+.filebox label:hover{
+	background: #63a080;
+	border: 2px solid #63a080;
 }

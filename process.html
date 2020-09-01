@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>gradulator</title>
+	<style></style>
+	<link rel="stylesheet" href="process.css">
+	<script type="text/javascript" src="process.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.6/xlsx.min.js" integrity="sha512-X53zyt2zVcpa26yjS4j4nUzh6bEiymyqZ7zuZk6NoYqwZJcSzrScgtpsN1JPtcdROIhhnhBmtClj7eVe21qjyg==" crossorigin="anonymous"></script>
+</head>
+<body>
+	<h1 class="head-container">
+		<img id="back" src="img/back.png" width="50" height="50" alt="back" onClick="history.go(-1)">
+	</h1>
+	<div class="container">
+		<div class="item" id="logo" OnClick="location.href ='process.html'" style="cursor:pointer;">
+			KAIST GRADULATOR
+		</div>
+
+		<div class="item" id="contact" OnClick="location.href ='contact.html'" style="cursor:pointer;">
+			Contact Us
+		</div>
+
+		<div class="item" id="otl">
+			<a href="https://otl.kaist.ac.kr/main" target="_blank">OTL</a>
+		</div>
+
+		<div class="item" id="logout" OnClick="location.href ='index.html'" style="cursor:pointer;">
+			Logout
+		</div>
+
+		<div class="item" id="file-upload">
+			<span class="filebox">
+		        <label for="file" color="white">Upload</label>
+		        <input type="file" multiple name="file" id="file" accept=".xlsx, .xls, .csv" onchange="updateList(); excelExport();"/>
+		        <div id="fileList"></div>
+		    </span>
+		</div>
+
+		<div class="item" id="english">
+			<p id="text1">영어 시험 (일반 기준점수/청각장애인 3급이상 기준점수)</p>
+			<select class="select-input" id="english-select" name="english" onchange="english()">
+			    <option value="select">선택</option>
+			    <option value="yes">IBT TOFEL:83/62</option>
+			    <option value="no">PBT TOFEL:560/372</option>
+			    <option value="yes">CBT TOFEL:220/146</option>
+			    <option value="no">TOEIC:775/387</option>
+			    <option value="yes">TEPS:690/414</option>
+			    <option value="no">IELTS:6.5/4.8</option>
+			    <option value="no">없음</option>
+			</select>
+		</div>
+
+		<div class="item" id="ethics">
+		 	<p id="text1">윤리 및 안전</p>
+			<select class="select-input" id="ethics-select" name="ethics-and-safety" onchange="ethics()">
+			    <option value="select">선택</option>
+			    <option value="yes">예</option>
+			    <option value="no">아니오</option>
+			</select>
+		</div>
+
+		<button type="submit" class="item" id="submit-button">
+			<span>
+				submit
+			</span>
+		</button>
+	</div>
+</body>
+</html>

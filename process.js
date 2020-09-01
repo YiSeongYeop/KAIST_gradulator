@@ -1,12 +1,12 @@
-selected1 = function(e) {
+ethics = function(e) {
     //let target = document.getElementById("ethics-and-safety").text
-    let selTxt1 = document.querySelector('select#ethics-and-safety option:checked').text;
+    let selTxt1 = document.querySelector('select#ethics-select option:checked').text;
     console.log(selTxt1);
 }
 
-selected2 = function(e) {
+english = function(e) {
     //let target = document.getElementById("ethics-and-safety").text
-    let selTxt2 = document.querySelector('select#english option:checked').text;
+    let selTxt2 = document.querySelector('select#english-select option:checked').text;
     console.log(selTxt2);
 }
 
