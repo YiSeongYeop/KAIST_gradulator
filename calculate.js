@@ -23,6 +23,7 @@ updateList = function() {
 excelExport = function() {
     let input = event.target;
     let i,f;
+    let info_list = new Array();
 
     for (i=0; i<input.files.length; ++i) {
         f = input.files[i];
@@ -34,11 +35,14 @@ excelExport = function() {
                 let rowObj =XLSX.utils.sheet_to_json(wb.Sheets[sheetName]);
                 //console.log(JSON.stringify(rowObj));
                 let info = dataParser(rowObj);
-                console.log(info);
+                //console.log(info);
+                info_list.push(info);
             })
         };
         reader.readAsArrayBuffer(f);
     }
+    console.log(info_list);
+    return info_list;
 }
 
 dataParser = function(rowObj) {
@@ -54,7 +58,6 @@ dataParser = function(rowObj) {
     let student_id = rowObj[1]["__EMPTY_8"];
     let application_credit = rowObj[1]["__EMPTY_15"];
     if (application_credit == "") {
-        console.log("empty semester");
         return 0;
     }
 
