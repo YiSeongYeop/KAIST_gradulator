@@ -3,4 +3,10 @@ class Student {
   extraType: ExtraType;
   extraDepartment: Department;
   courses: Array<CourseNumber>;
+  requirements: Map<RequirementType, Requirement>;
+
+  getMissingCourses(): Array<CourseNumber> {
+    // TODO: Implement
+    return [];
+  }
 }
