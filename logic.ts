@@ -1,25 +1,5 @@
 type Department = "전산학부" | "전기및전자공학부" | null;
 
-class Major {
-  department: Department;
-}
-
-class AdvancedMajor {
-}
-
-class IndividuallyDesignedMajor {
-}
-
-class Minor {
-  department: Department;
-}
-
-class DoubleMajor {
-  department: Department;
-}
-
-type Extra = AdvancedMajor | IndividuallyDesignedMajor | Minor | DoubleMajor;
-
 type CourseClassification = "교양필수" | "교양필수 AU" | "인문사회선택" | "기초필수" | "기초선택" | "전공필수" | "전공선택" | "연구";
 
 type CourseNumber = string;
@@ -33,10 +13,13 @@ class Course {
   credit: number;
 }
 
+type ExtraType = "심화전공" | "자유융합전공" | "부전공" | "복수전공";
+
 class Student {
-  major: Major;
-  extra: Extra; // TODO: Change to string literal union + nullable department?
-  courses: CourseNumber[];
+  majorDepartment: Department;
+  extraType: ExtraType;
+  extraDepartment: Department;
+  courses: Array<CourseNumber>;
 }
 
 abstract class RequiredCourse {
@@ -53,9 +36,9 @@ class SpecificCourse extends RequiredCourse {
 
 class ChooseNum extends RequiredCourse {
   num: number;
-  courses: CourseNumber[];
+  courses: Array<CourseNumber>;
 
-  constructor(num: number, courses: CourseNumber[]) {
+  constructor(num: number, courses: Array<CourseNumber>) {
     super();
     this.num = num;
     this.courses = courses;
@@ -64,9 +47,9 @@ class ChooseNum extends RequiredCourse {
 
 class AnyCourseIn extends RequiredCourse {
   department: Department;
-  classifications: CourseClassification[];
+  classifications: Array<CourseClassification>;
 
-  constructor(department: Department, classifications: CourseClassification[]) {
+  constructor(department: Department, classifications: Array<CourseClassification>) {
     super();
     this.department = department;
     this.classifications = classifications;
@@ -75,9 +58,9 @@ class AnyCourseIn extends RequiredCourse {
 
 class Requirement {
   credit: number;
-  requiredCourses: RequiredCourse[];
+  requiredCourses: Array<RequiredCourse>;
 
-  constructor(credit: number, requiredCourses: RequiredCourse[]) {
+  constructor(credit: number, requiredCourses: Array<RequiredCourse>) {
     this.credit = credit;
     this.requiredCourses = requiredCourses;
   }
