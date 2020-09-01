@@ -31,7 +31,7 @@ const COURSE_LIST_CSV = `
 인문사회과학부,교양필수,체육,HSS050,10.050,댄스스포츠,2AU,,"봄,가을",
 인문사회과학부,교양필수,체육,HSS051,10.051,체력육성,2AU,,"봄,가을",
 인문사회과학부,교양필수,체육,HSS052,10.052,코어운동,2AU,,"봄,가을",
-인문사회과학부,교양필수,체육,HSS053,"13,053",발레핏,2AU,,"봄,가을",
+인문사회과학부,교양필수,체육,HSS053,13.053,발레핏,2AU,,"봄,가을",
 인문사회과학부,교양필수,체육,HSS054,13.054,고급수영,2AU,,"봄,가을",
 인문사회과학부,교양필수,인성 리더십,HSS060,10.172,인성/리더십I,1AU,,"봄,가을",
 인문사회과학부,교양필수,인성 리더십,HSS061,10.173,인성/리더십II,1AU,,"봄,가을",
@@ -413,29 +413,26 @@ const COURSE_LIST_CSV = `
 전기및전자공학부,연구,,EE496,35.496,세미나,1:0:1,,봄,
 `;
 const COURSE_LIST = new Map();
-this.Papa.parse(COURSE_LIST_CSV, {
+let result = this.Papa.parse(COURSE_LIST_CSV, {
     header: true,
     skipEmptyLines: true,
-    complete: result => {
-        for (let data of result.data) {
-            let classification = "교양필수 (학점)";
-            let credit = -1;
-            let matched;
-            if ((matched = /\d+:\d+:(\d+)(\(\d+\))?/.exec(data["강:실:학(숙제)"])) !== null) {
-                if (data["과목구분"] === "교양필수") {
-                    classification = "교양필수 (학점)";
-                }
-                else {
-                    classification = data["과목구분"];
-                }
-                credit = parseInt(matched[1]);
-            }
-            else if ((matched = /(\d+)AU/.exec(data["강:실:학(숙제)"])) !== null) {
-                classification = "교양필수 (AU)";
-                credit = parseInt(matched[1]);
-            }
-            COURSE_LIST.set(data["과목번호"], new Course(data["학과"], classification, (data["세부 과목구분"] === "") ? null : data["세부 과목구분"], data["과목번호"], data["전산코드"], data["교과목명"], credit));
-        }
-        console.log("COURSE_LIST completed");
-    },
 });
+for (let data of result.data) {
+    let classification = "교양필수 (학점)";
+    let credit = -1;
+    let matched;
+    if ((matched = /\d+:\d+:(\d+)(\(\d+\))?/.exec(data["강:실:학(숙제)"])) !== null) {
+        if (data["과목구분"] === "교양필수") {
+            classification = "교양필수 (학점)";
+        }
+        else {
+            classification = data["과목구분"];
+        }
+        credit = parseInt(matched[1]);
+    }
+    else if ((matched = /(\d+)AU/.exec(data["강:실:학(숙제)"])) !== null) {
+        classification = "교양필수 (AU)";
+        credit = parseInt(matched[1]);
+    }
+    COURSE_LIST.set(data["과목번호"], new Course(data["학과"], classification, (data["세부 과목구분"] === "") ? null : data["세부 과목구분"], data["과목번호"], data["전산코드"], data["교과목명"], credit));
+}
