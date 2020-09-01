@@ -1,5 +1,27 @@
+type Department = "인문사회과학부" | "전산학부" | "전기및전자공학부";
+
+
+type CourseClassification = "교양필수 (학점)" | "교양필수 (AU)" | "인문사회선택" | "기초필수" | "기초선택" | "전공필수" | "전공선택" | "연구";
+
+type DetailedCourseClassification = "논술" | "영어"
+  | "체육" | "인성 리더십" | "윤리 및 안전" | "봉사활동" | "즐거운 대학생활" | "신나는 대학생활"
+  | "인문계열" | "사회계열" | "문학예술계열"
+  | null;
+
+type CourseNumber = string;
+
+class Course {
+  department: Department;
+  classification: CourseClassification;
+  detailedClassification: DetailedCourseClassification;
+  number: CourseNumber;
+  code: string;
+  name: string;
+  credit: number;
+}
+
 const COURSE_LIST_CSV = `
-학과,과목구분,과목구분 세부,과목번호,전산코드,교과목명,강:실:학(숙제),개설학기,비고
+학과,과목구분,세부 과목구분,과목번호,전산코드,교과목명,강:실:학(숙제),개설학기,비고
 인문사회과학부,교양필수,논술,HSS001,10.103,논리적 글쓰기,3:0:3(6),"봄,가을",
 인문사회과학부,교양필수,논술,HSS002,10.274,비평적 글쓰기,3:0:3(6),"봄,가을",
 인문사회과학부,교양필수,논술,HSS003,10.275,실용적 글쓰기,3:0:3(6),"봄,가을",
@@ -402,7 +424,7 @@ const COURSE_LIST_CSV = `
 전기및전자공학부,연구,,EE496,35.496,세미나,1:0:1,봄,
 `;
 
-const COURSE_LIST = [];
+const COURSE_LIST = new Map();
 
 Papa.parse(COURSE_LIST_CSV, {
   complete: result => {
