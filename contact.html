@@ -2,60 +2,45 @@
 <html lang="kr">
 <head>
 	<meta charset="UTF-8">
-	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-	<link rel="icon" href="img/favicon.ico" type="image/x-icon" />
-	<title>Document</title>
-
+	<title>gradulator</title>
+	<style></style>
 	<link rel="stylesheet" href="contact.css">
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.6/xlsx.min.js" integrity="sha512-X53zyt2zVcpa26yjS4j4nUzh6bEiymyqZ7zuZk6NoYqwZJcSzrScgtpsN1JPtcdROIhhnhBmtClj7eVe21qjyg==" crossorigin="anonymous"></script>
 </head>
 <body>
-	<h1>
-		<span id="logo">
-			<a href="calculate.html" target="_self">KAIST GRADULATOR</a>
-		</span>
-		<span id="menu">
-			<span id="contact" class="menu">
-				<a href="contact.html" target="_self">contact</a>
-			</span>
-		</span>
-		<span>
-			<span id="otl" class="menu">
-				<a href="https://otl.kaist.ac.kr/main" target="_blank">otl</a>
-			</span>
-		</span>
-		<span>
-			<span id="logout" class="menu">
-				<a href="login.html" target="_self">logout</a>
-			</span>
-		</span>
-		<span>
-			<span id="clock" class="menu">
-				<a href="clock.html" target="_blank">clock</a>
-			</span>
-		</span>
+	<h1 class="head-container">
+		<img id="back" src="img/back.png" width="50" height="50" alt="back" onClick="history.go(-1)">
 	</h1>
+	<div class="container">
+		<div class="item" id="logo" OnClick="location.href ='process.html'" style="cursor:pointer;">
+			KAIST GRADULATOR
+		</div>
 
-	<div id="github">
-		<div id="developer">
-			DEVELOPER
+		<div class="item" id="contact" OnClick="location.href ='contact.html'" style="cursor:pointer;">
+			Contact Us
 		</div>
-		<div id="name" class="name">
-			Yi SeongYeop&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Kim JiHun
+
+		<div class="item" id="otl" onClick="window.open('https://otl.kaist.ac.kr/main')" style="cursor:pointer;">
+			OTL
 		</div>
-		<div id="github-img">
+
+		<div class="item" id="logout" OnClick="location.href ='index.html'" style="cursor:pointer;">
+			Logout
+		</div>
+
+		<div class="item" id="developer">
+			Developer
+		</div>
+
+		<div class="item" id="lsykjh">
+			<span>이성엽&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;김지훈</span>
+		</div>
+		<div class="item" id="github-img">
 			<span>
-				<a href="https://github.com/YiSeongYeop" target="_blank"><img draggable="false" src="img/GitHub_Logo_White.png" width="300" height="123"></a>
+				<a href="https://github.com/YiSeongYeop" target="_blank"><img src="img/GitHub_Logo_White.png" width="200" height="82"></a>
 			</span>
+			<span>&emsp;&emsp;</span>
 			<span>
-				<a href="https://github.com/kjh618" target="_blank"><img draggable="false" src="img/GitHub_Logo_White.png" width="300" height="123"></a>
-			</span>
-		</div>
-		<div id="kaist-img">
-			<span>
-				<a href="https://www.kaist.ac.kr/kr/" target="_blank"><img draggable="false" src="img/kaist_logo_trans(white).png" width="396" height="110"></a>
+				<a href="https://github.com/kjh618" target="_blank"><img src="img/GitHub_Logo_White.png" width="200" height="82"></a>
 			</span>
 		</div>
 	</div>
