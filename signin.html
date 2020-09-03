@@ -5,27 +5,33 @@
 	<title>gradulator</title>
 	<style></style>
 	<link rel="stylesheet" href="signin.css">
-	<script type="text/javascript" src="signin.js"></script>
+	<script type="text/javascript" src="http://requirejs.org/docs/release/2.3.2/minified/require.js"></script>
+	<script type="text/javascript" src="sign.js"></script>
 </head>
 <body>
+	<script>
+		function back() {
+			window.location.replace("/index");
+		}
+	</script>
 	<h1 class="head-container">
-		<img id="back" src="img/back.png" width="50" height="50" alt="back" onClick="history.go(-1)">
+		<img id="back" src="img/back.png" width="50" height="50" alt="back" onClick="back();" style="cursor: pointer">
 		<div id="title">Sign In</div>
 	</h1>
-	<div class="container">
+	<form id="form" class="container" method="post" action="/signin">
 		<div class="item">
 			<p class="var">ID</p>
-			<input type="text" class="inputs" placeholder="ID"></input>
+			<input type="text" name="id" class="inputs" placeholder="ID"></input>
 		</div>
 		<div class="item">
 			<p class="var">Password</p>
-			<input type="password" class="inputs" placeholder="password"></input>
+			<input type="password" name="pw" class="inputs" placeholder="password"></input>
 		</div>
-		<button type="submit" class="submit-button" OnClick="location.href ='process.html'">
+		<button type="submit" class="submit-button">
 			<span>
 				submit
 			</span>
 		</button>
-	</div>
+	</form>
 </body>
 </html>

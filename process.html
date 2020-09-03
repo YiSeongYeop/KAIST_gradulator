@@ -9,15 +9,29 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.6/xlsx.min.js" integrity="sha512-X53zyt2zVcpa26yjS4j4nUzh6bEiymyqZ7zuZk6NoYqwZJcSzrScgtpsN1JPtcdROIhhnhBmtClj7eVe21qjyg==" crossorigin="anonymous"></script>
 </head>
 <body>
+	<script>
+		function back1() {
+			var result = confirm("Really Logout?");
+			    if (result == true) {
+        		window.location.replace("/index");
+    		}
+		}
+		function back2() {
+        	window.location.replace("/process");
+    	}
+		function back3() {
+        	window.location.replace("/contact");
+		}
+	</script>
 	<h1 class="head-container">
-		<img id="back" src="img/back.png" width="50" height="50" alt="back" onClick="history.go(-1)">
+		<img id="back" src="img/back.png" width="50" height="50" alt="back" onClick="back1();" style="cursor: pointer">
 	</h1>
 	<div class="container">
-		<div class="item" id="logo" OnClick="location.href ='process.html'" style="cursor:pointer;">
+		<div class="item" id="logo" OnClick="back2();" style="cursor:pointer;" >
 			KAIST GRADULATOR
 		</div>
 
-		<div class="item" id="contact" OnClick="location.href ='contact.html'" style="cursor:pointer;">
+		<div class="item" id="contact" OnClick="back3();" style="cursor:pointer;">
 			Contact Us
 		</div>
 
@@ -25,7 +39,7 @@
 			OTL
 		</div>
 
-		<div class="item" id="logout" OnClick="location.href ='index.html'" style="cursor:pointer;">
+		<div class="item" id="logout" OnClick="alerting()" style="cursor:pointer;">
 			Logout
 		</div>
 

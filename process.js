@@ -1,3 +1,16 @@
+alerting = function() {
+    var result = confirm("Really Logout?");
+    if (result == true) {
+        window.location.replace("/index");
+    }
+}
+
+time = function() {
+    let time= new Date(); //시간받기위해서 new date
+    document.getElementById("now").innerHTML=time.getHours()+"시"+time.getMinutes()+"분"+time.getSeconds()+"초";
+    setInterval("time()",1000);     //1초 지난후 time()실행
+  }
+
 ethics = function(e) {
     //let target = document.getElementById("ethics-and-safety").text
     let selTxt1 = document.querySelector('select#ethics-select option:checked').text;
