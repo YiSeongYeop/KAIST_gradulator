@@ -23,6 +23,12 @@ english = function(e) {
     console.log(selTxt2);
 }
 
+submj = function(e) {
+    //let target = document.getElementById("ethics-and-safety").text
+    let selTxt3 = document.querySelector('select#submj-select option:checked').text;
+    console.log(selTxt3);
+}
+
 updateList = function() {
     var input = document.getElementById('file');
     var output = document.getElementById('fileList');

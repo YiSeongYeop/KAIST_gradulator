@@ -148,7 +148,7 @@ a {
 
 #file-upload {
 	grid-column: 1 / 7;
-	grid-row: 2 / 7;
+	grid-row: 2 / 5;
 
 	color: #d3d3d3;
 	padding: 3px;
@@ -162,6 +162,16 @@ a {
 
 	padding-left: 5px;
 	padding-right: 5px;
+}
+
+#sub-major {
+    grid-column: 1 / 7;
+    grid-row: 5 / 7;
+
+    color: #d3d3d3;
+
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 #ethics {
@@ -229,11 +239,9 @@ a {
 #fileList {
     color: #d3d3d3;
     width: 313px;
-    height: 250px;
+    height: 125px;
 
     margin-bottom: 20px;
-
-    /*border: 1px solid black;*/
     overflow: auto;
 }
 
