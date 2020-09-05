@@ -15,6 +15,8 @@ class RequirementType {
   }
 }
 
+type RequirementTypeString = string;
+
 abstract class RequiredCourse {
 }
 
@@ -38,6 +40,17 @@ class ChooseNumFrom extends RequiredCourse {
   }
 }
 
+class ChooseCreditFrom extends RequiredCourse {
+  credit: number;
+  courses: Array<CourseNumber>;
+
+  constructor(credit: number, courses: Array<CourseNumber>) {
+    super();
+    this.credit = credit;
+    this.courses = courses;
+  }
+}
+
 class ChooseNumIn extends RequiredCourse {
   num: number;
   department: Department | null;
@@ -48,17 +61,6 @@ class ChooseNumIn extends RequiredCourse {
     this.num = num;
     this.department = department;
     this.classifications = classifications;
-  }
-}
-
-class ChooseCreditFrom extends RequiredCourse {
-  credit: number;
-  courses: Array<CourseNumber>;
-
-  constructor(credit: number, courses: Array<CourseNumber>) {
-    super();
-    this.credit = credit;
-    this.courses = courses;
   }
 }
 
@@ -94,14 +96,29 @@ class Requirement {
     this.credit = credit;
     this.requiredCourses = requiredCourses;
   }
+
+  normalized(): NormalizedRequirement {
+    let normalizedRequiredCourses;
+    return new NormalizedRequirement(this.credit, normalizedRequiredCourses);
+  }
 }
 
-const REQUIREMENT_LIST = new Map([
-  [JSON.stringify(new RequirementType("교양필수 (학점)", null, null, false)), new Requirement(7, [
+class NormalizedRequirement {
+  credit: number;
+  requiredCourses: Array<ChooseCreditFrom>;
+
+  constructor(credit: number, requiredCourses: Array<ChooseCreditFrom>) {
+    this.credit = credit;
+    this.requiredCourses = requiredCourses;
+  }
+}
+
+const REQUIREMENT_LIST: Map<RequirementTypeString, Requirement> = new Map([
+  [JSON.stringify(new RequirementType("교양필수 (학점)", null, null, null)), new Requirement(7, [
     new AllIn(null, [["교양필수 (학점)", "영어"]]),
     new ChooseNumFrom(1, ["HSS001", "HSS002", "HSS003", "HSS004"]),
   ])],
-  [JSON.stringify(new RequirementType("교양필수 (AU)", null, null, true)), new Requirement(8, [
+  [JSON.stringify(new RequirementType("교양필수 (AU)", null, null, null)), new Requirement(8, [
     new ChooseCreditIn(4, null, [["교양필수 (AU)", "체육"]]),
     new ChooseCreditIn(2, null, [["교양필수 (AU)", "인성 리더십"]]),
     new SpecificCourse("HSS090"),
