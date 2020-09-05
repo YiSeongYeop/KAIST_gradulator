@@ -163,8 +163,15 @@ const REQUIREMENT_LIST = new Map([
             new ChooseCreditIn(12, null, [["인문사회선택", null]]),
         ])],
     [JSON.stringify(new RequirementType("기초필수", null, null, null)), new Requirement(23, [
-            new AllIn(null, [["기초필수", null]])
-            // Missing handling for PH171, PH172
+            new SpecificCourse("PH141"),
+            new SpecificCourse("PH142"),
+            new SpecificCourse("PH151"),
+            new SpecificCourse("BS120"),
+            new SpecificCourse("MAS101"),
+            new SpecificCourse("MAS102"),
+            new SpecificCourse("CH101"),
+            new SpecificCourse("CH102"),
+            new SpecificCourse("CS101"),
         ])],
     [JSON.stringify(new RequirementType(null, null, "자유융합전공", null)), new Requirement(12, [
             new ChooseCreditIn(12, null, [["전공선택", null], ["전공필수", null]]),
@@ -177,7 +184,12 @@ const REQUIREMENT_LIST = new Map([
             new SpecificCourse("MAS109"),
         ])],
     [JSON.stringify(new RequirementType(null, "전산학부", "주전공", null)), new Requirement(49, [
-            new AllIn("전산학부", [["전공필수", null]]),
+            new SpecificCourse("CS204"),
+            new SpecificCourse("CS206"),
+            new SpecificCourse("CS300"),
+            new SpecificCourse("CS311"),
+            new SpecificCourse("CS320"),
+            new SpecificCourse("CS330"),
             new ChooseCreditIn(30, "전산학부", [["전공선택", null]]),
         ])],
     [JSON.stringify(new RequirementType(null, "전산학부", "심화전공", null)), new Requirement(12, [
@@ -191,6 +203,7 @@ const REQUIREMENT_LIST = new Map([
             new AllIn("전산학부", [["전공필수", null]]),
             new ChooseCreditIn(21, "전산학부", [["전공선택", null]]),
         ])],
+    // 전산학 프로젝트 처리 없음
     [JSON.stringify(new RequirementType("기초선택", "전기및전자공학부", null, false)), new Requirement(9, [
             new ChooseNumFrom(2, ["MAS109", "MAS201", "MAS202"]),
             new ChooseCreditIn(3, null, [["기초선택", null]]),
