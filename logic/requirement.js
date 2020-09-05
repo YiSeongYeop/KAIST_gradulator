@@ -37,10 +37,24 @@ class ChooseCreditFrom extends RequiredCourse {
     normalized() {
         return new ChooseCreditFrom(this.credit, this.courses);
     }
+    removeCourse(course) {
+        if (this.credit <= 0) {
+            return false;
+        }
+        let index = this.courses.findIndex(c => c === course || COURSE_LIST.get(c).substitutes.indexOf(course) !== -1);
+        if (index === -1) {
+            return false;
+        }
+        else {
+            this.credit -= COURSE_LIST.get(course).credit;
+            this.courses.splice(index, 1);
+            return true;
+        }
+    }
 }
 function getAllCoursesIn(department, classification) {
     let courses = [];
-    for (let [courseNumber, course] of COURSE_LIST.entries()) {
+    for (let [courseNumber, course] of COURSE_LIST) {
         if (course.classification === classification[0] && course.detailedClassification === classification[1]) {
             if (department === null) {
                 courses.push(courseNumber);
@@ -93,7 +107,7 @@ class AllIn extends RequiredCourse {
         for (let classification of this.classifications) {
             courses.push(...getAllCoursesIn(this.department, classification));
         }
-        return new ChooseCreditFrom(courses.reduce((sum, cn) => sum + COURSE_LIST.get(cn).credit, 0), courses);
+        return new ChooseCreditFrom(courses.reduce((sum, c) => sum + COURSE_LIST.get(c).credit, 0), courses);
     }
 }
 class Requirement {
@@ -110,6 +124,14 @@ class NormalizedRequirement {
     constructor(credit, requiredCourses) {
         this.credit = credit;
         this.requiredCourses = requiredCourses;
+    }
+    removeCourse(course) {
+        for (let requiredCourse of this.requiredCourses) {
+            if (requiredCourse.removeCourse(course) === true) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 const REQUIREMENT_LIST = new Map([

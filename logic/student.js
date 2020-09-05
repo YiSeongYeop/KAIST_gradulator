@@ -6,17 +6,15 @@ class Student {
         this.extraDepartment = extraDepartment;
         this.courses = courses;
         this.requirements = new Map();
-        this.buildRequirements();
-        this.normalizedRequirements = new Map();
-        for (let [requirementTypeString, requirement] of this.requirements.entries()) {
-            this.normalizedRequirements.set(requirementTypeString, requirement.normalized());
-        }
+        this.calculateRequirements();
+        this.missingRequirements = new Map();
+        this.calculateMissingRequirements();
     }
     addRequirement(requirementType) {
         let requirementTypeString = JSON.stringify(requirementType);
         this.requirements.set(requirementTypeString, REQUIREMENT_LIST.get(requirementTypeString));
     }
-    buildRequirements() {
+    calculateRequirements() {
         let isDoubleMajor = this.extraType === "복수전공";
         this.addRequirement(new RequirementType("교양필수 (학점)", null, null, null));
         this.addRequirement(new RequirementType("교양필수 (AU)", null, null, null));
@@ -37,8 +35,20 @@ class Student {
                 break;
         }
     }
-    getMissingCourses() {
-        // TODO: Implement
-        return [];
+    removeCourseFromMissingRequirements(course) {
+        for (let [_, normalizedRequirement] of this.missingRequirements) {
+            if (normalizedRequirement.removeCourse(course) === true) {
+                return;
+            }
+        }
+        console.error('course not in requirement', course);
+    }
+    calculateMissingRequirements() {
+        for (let [requirementTypeString, requirement] of this.requirements) {
+            this.missingRequirements.set(requirementTypeString, requirement.normalized());
+        }
+        for (let course of this.courses) {
+            this.removeCourseFromMissingRequirements(course);
+        }
     }
 }

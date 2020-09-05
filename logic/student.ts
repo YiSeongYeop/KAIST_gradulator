@@ -4,14 +4,14 @@ class Student {
   extraDepartment: Department | null;
   courses: Array<CourseNumber>;
   requirements: Map<RequirementTypeString, Requirement>;
-  normalizedRequirements: Map<RequirementTypeString, NormalizedRequirement>;
+  missingRequirements: Map<RequirementTypeString, NormalizedRequirement>;
 
   private addRequirement(requirementType: RequirementType) {
     let requirementTypeString = JSON.stringify(requirementType);
     this.requirements.set(requirementTypeString, REQUIREMENT_LIST.get(requirementTypeString) as Requirement);
   }
 
-  private buildRequirements() {
+  private calculateRequirements() {
     let isDoubleMajor = this.extraType === "복수전공";
     this.addRequirement(new RequirementType("교양필수 (학점)", null, null, null));
     this.addRequirement(new RequirementType("교양필수 (AU)", null, null, null));
@@ -33,21 +33,40 @@ class Student {
     }
   }
 
-  constructor(majorDepartment: Department, extraType: ExtraType, extraDepartment: Department | null, courses: Array<CourseNumber>) {
+  private removeCourseFromMissingRequirements(course: CourseNumber) {
+    for (let [_, normalizedRequirement] of this.missingRequirements) {
+      if (normalizedRequirement.removeCourse(course) === true) {
+        return;
+      }
+    }
+    console.error('course not in requirement', course);
+  }
+
+  private calculateMissingRequirements() {
+    for (let [requirementTypeString, requirement] of this.requirements) {
+      this.missingRequirements.set(requirementTypeString, requirement.normalized());
+    }
+
+    for (let course of this.courses) {
+      this.removeCourseFromMissingRequirements(course);
+    } 
+  }
+
+  constructor(
+    majorDepartment: Department,
+    extraType: ExtraType,
+    extraDepartment: Department | null,
+    courses: Array<CourseNumber>,
+  ) {
     this.majorDepartment = majorDepartment;
     this.extraType = extraType;
     this.extraDepartment = extraDepartment;
     this.courses = courses;
     this.requirements = new Map();
-    this.buildRequirements();
-    this.normalizedRequirements = new Map();
-    for (let [requirementTypeString, requirement] of this.requirements.entries()) {
-      this.normalizedRequirements.set(requirementTypeString, requirement.normalized());
-    }
+    this.calculateRequirements();
+    this.missingRequirements = new Map();
+    this.calculateMissingRequirements();    
   }
 
-  getMissingCourses(): Array<CourseNumber> {
-    // TODO: Implement
-    return [];
-  }
+
 }
