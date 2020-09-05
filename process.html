@@ -47,7 +47,7 @@
 		<div class="item" id="file-upload">
 			<span class="filebox">
 		        <label for="file" color="white">Upload</label>
-		        <input type="file" multiple name="file" id="file" accept=".xlsx, .xls, .csv" onchange="updateList(); excelExport();"/>
+		        <input type="file" multiple name="file" id="file" accept=".xlsx, .xls, .csv" onchange="updateList();"/>
 		        <div id="fileList"></div>
 		    </span>
 		</div>
@@ -56,13 +56,24 @@
 			<p id="text1">복부심자전공</p>
 			<select class="select-input" id="submj-select" name="submj" onchange="submj();">
 			    <option value="select">선택</option>
-			    <option value="yes">전산학부</option>
-			    <option value="no">전기전자공학부</option>
-			    <option value="yes">물리학부</option>
-			    <option value="no">수리과학부</option>
-			    <option value="yes">물은 역시 찬물</option>
-			    <option value="no">게토레이는 레몬맛</option>
-			    <option value="no">밖에 왤케 춥냐</option>
+			    <option value="yes">건설 및 환경공학과</option>
+			    <option value="no">경영과학과</option>
+			    <option value="yes">기계공학과</option>
+			    <option value="no">물리학과</option>
+			    <option value="yes">바이오 및 뇌공학과</option>
+			    <option value="no">산업 및 시스템공학과</option>
+			    <option value="no">생명과학과</option>
+			    <option value="select">생명화학공학과</option>
+			    <option value="yes">산업디자인학과</option>
+			    <option value="no">수리과학과</option>
+			    <option value="yes">신소재공학과</option>
+			    <option value="no">원자력 및 양자공학과</option>
+			    <option value="yes">전기 및 전자공학과</option>
+			    <option value="no">전산학과</option>
+			    <option value="no">기술경영학과</option>
+			    <option value="no">화학과</option>
+			    <option value="no">항공우주공학과</option>
+			    <option value="no">융합기초학과</option>
 			</select>
 		</div>
 
@@ -89,7 +100,7 @@
 			</select>
 		</div>
 
-		<button type="submit" class="item" id="submit-button">
+		<button type="submit" class="item" id="submit-button" onclick="processxl(calculate);">
 			<span>
 				submit
 			</span>
