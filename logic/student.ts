@@ -4,11 +4,11 @@ class Student {
   extraDepartment: Department | null;
   courses: Array<CourseNumber>;
   requirements: Map<RequirementTypeString, Requirement>;
-  #normalizedRequirements: Map<RequirementTypeString, Requirement>;
+  normalizedRequirements: Map<RequirementTypeString, NormalizedRequirement>;
 
   private addRequirement(requirementType: RequirementType) {
     let requirementTypeString = JSON.stringify(requirementType);
-    this.requirements.set(requirementTypeString, REQUIREMENT_LIST[requirementTypeString]);
+    this.requirements.set(requirementTypeString, REQUIREMENT_LIST.get(requirementTypeString) as Requirement);
   }
 
   private buildRequirements() {
@@ -21,17 +21,14 @@ class Student {
     this.addRequirement(new RequirementType(null, this.majorDepartment, "주전공", null));
     switch(this.extraType) {
       case "심화전공":
-        console.assert(this.extraDepartment === null);
         this.addRequirement(new RequirementType(null, this.majorDepartment, "심화전공", null));
         break;
       case "자유융합전공":
-        console.assert(this.extraDepartment === null);
         this.addRequirement(new RequirementType(null, null, "자유융합전공", null));
         break;
       case "부전공":
       case "복수전공":
-        console.assert(this.extraDepartment !== null);
-        this.addRequirement(new RequirementType(null, this.extraDepartment, "부전공", null));
+        this.addRequirement(new RequirementType(null, this.extraDepartment, this.extraType, null));
         break;
     }
   }
@@ -41,7 +38,12 @@ class Student {
     this.extraType = extraType;
     this.extraDepartment = extraDepartment;
     this.courses = courses;
+    this.requirements = new Map();
     this.buildRequirements();
+    this.normalizedRequirements = new Map();
+    for (let [requirementTypeString, requirement] of this.requirements.entries()) {
+      this.normalizedRequirements.set(requirementTypeString, requirement.normalized());
+    }
   }
 
   getMissingCourses(): Array<CourseNumber> {

@@ -458,9 +458,9 @@ const COURSE_LIST_CSV = `
 전기및전자공학부,연구,,EE496,35.496,세미나,1:0:1,,봄,
 `;
 
-const COURSE_LIST = new Map();
+const COURSE_LIST: Map<CourseNumber, Course> = new Map();
 
-let result = this.Papa.parse(COURSE_LIST_CSV, {
+let result = (this as any).Papa.parse(COURSE_LIST_CSV, {
   header: true,
   skipEmptyLines: true,
 });

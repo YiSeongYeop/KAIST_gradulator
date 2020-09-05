@@ -1,4 +1,4 @@
-function testJsonStringifyEqual(left, right) {
+function testJsonStringifyEqual(left: any, right: any) {
   if (JSON.stringify(left) === JSON.stringify(right)) {
     console.log("PASS", left);
   } else {
@@ -14,4 +14,7 @@ testJsonStringifyEqual(
   COURSE_LIST.get("PH141"),
   new Course("물리학과", "기초필수", null, "PH141", "20.141", "일반물리학 I", 3, ["PH121", "PH161"]),
 );
-// TODO: Add tests
+
+let student = new Student("전산학부", "복수전공", "전기및전자공학부", []);
+console.table(student.requirements);
+console.table(student.normalizedRequirements);

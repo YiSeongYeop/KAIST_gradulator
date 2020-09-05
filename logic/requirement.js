@@ -1,3 +1,4 @@
+"use strict";
 class RequirementType {
     constructor(classification, department, forMajorOrExtra, isForDoubleMajor) {
         this.classification = classification;
@@ -13,6 +14,9 @@ class SpecificCourse extends RequiredCourse {
         super();
         this.course = course;
     }
+    normalized() {
+        return new ChooseCreditFrom(COURSE_LIST.get(this.course).credit, [this.course]);
+    }
 }
 class ChooseNumFrom extends RequiredCourse {
     constructor(num, courses) {
@@ -20,6 +24,33 @@ class ChooseNumFrom extends RequiredCourse {
         this.num = num;
         this.courses = courses;
     }
+    normalized() {
+        return new ChooseCreditFrom(COURSE_LIST.get(this.courses[0]).credit * this.num, this.courses);
+    }
+}
+class ChooseCreditFrom extends RequiredCourse {
+    constructor(credit, courses) {
+        super();
+        this.credit = credit;
+        this.courses = courses;
+    }
+    normalized() {
+        return new ChooseCreditFrom(this.credit, this.courses);
+    }
+}
+function getAllCoursesIn(department, classification) {
+    let courses = [];
+    for (let [courseNumber, course] of COURSE_LIST.entries()) {
+        if (course.classification === classification[0] && course.detailedClassification === classification[1]) {
+            if (department === null) {
+                courses.push(courseNumber);
+            }
+            else if (course.department === department) {
+                courses.push(courseNumber);
+            }
+        }
+    }
+    return courses;
 }
 class ChooseNumIn extends RequiredCourse {
     constructor(num, department, classifications) {
@@ -28,12 +59,12 @@ class ChooseNumIn extends RequiredCourse {
         this.department = department;
         this.classifications = classifications;
     }
-}
-class ChooseCreditFrom extends RequiredCourse {
-    constructor(credit, courses) {
-        super();
-        this.credit = credit;
-        this.courses = courses;
+    normalized() {
+        let courses = [];
+        for (let classification of this.classifications) {
+            courses.push(...getAllCoursesIn(this.department, classification));
+        }
+        return new ChooseCreditFrom(COURSE_LIST.get(courses[0]).credit * this.num, courses);
     }
 }
 class ChooseCreditIn extends RequiredCourse {
@@ -43,6 +74,13 @@ class ChooseCreditIn extends RequiredCourse {
         this.department = department;
         this.classifications = classifications;
     }
+    normalized() {
+        let courses = [];
+        for (let classification of this.classifications) {
+            courses.push(...getAllCoursesIn(this.department, classification));
+        }
+        return new ChooseCreditFrom(this.credit, courses);
+    }
 }
 class AllIn extends RequiredCourse {
     constructor(department, classifications) {
@@ -50,19 +88,36 @@ class AllIn extends RequiredCourse {
         this.department = department;
         this.classifications = classifications;
     }
+    normalized() {
+        let courses = [];
+        for (let classification of this.classifications) {
+            courses.push(...getAllCoursesIn(this.department, classification));
+        }
+        return new ChooseCreditFrom(courses.reduce((sum, cn) => sum + COURSE_LIST.get(cn).credit, 0), courses);
+    }
 }
 class Requirement {
     constructor(credit, requiredCourses) {
         this.credit = credit;
         this.requiredCourses = requiredCourses;
     }
+    normalized() {
+        let normalizedRequiredCourses = this.requiredCourses.map(rc => rc.normalized());
+        return new NormalizedRequirement(this.credit, normalizedRequiredCourses);
+    }
+}
+class NormalizedRequirement {
+    constructor(credit, requiredCourses) {
+        this.credit = credit;
+        this.requiredCourses = requiredCourses;
+    }
 }
 const REQUIREMENT_LIST = new Map([
-    [JSON.stringify(new RequirementType("교양필수 (학점)", null, null, false)), new Requirement(7, [
+    [JSON.stringify(new RequirementType("교양필수 (학점)", null, null, null)), new Requirement(7, [
             new AllIn(null, [["교양필수 (학점)", "영어"]]),
             new ChooseNumFrom(1, ["HSS001", "HSS002", "HSS003", "HSS004"]),
         ])],
-    [JSON.stringify(new RequirementType("교양필수 (AU)", null, null, true)), new Requirement(8, [
+    [JSON.stringify(new RequirementType("교양필수 (AU)", null, null, null)), new Requirement(8, [
             new ChooseCreditIn(4, null, [["교양필수 (AU)", "체육"]]),
             new ChooseCreditIn(2, null, [["교양필수 (AU)", "인성 리더십"]]),
             new SpecificCourse("HSS090"),

@@ -1,3 +1,4 @@
+"use strict";
 class Course {
     constructor(department, classification, detailedClassification, number, code, name, credit, substitutes) {
         this.department = department;
