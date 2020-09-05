@@ -8,19 +8,19 @@ alerting = function() {
 ethics = function(e) {
     //let target = document.getElementById("ethics-and-safety").text
     let selTxt1 = document.querySelector('select#ethics-select option:checked').text;
-    console.log(selTxt1);
+    return selTxt1;
 }
 
 english = function(e) {
     //let target = document.getElementById("ethics-and-safety").text
     let selTxt2 = document.querySelector('select#english-select option:checked').text;
-    console.log(selTxt2);
+    return selTxt2;
 }
 
 submj = function(e) {
     //let target = document.getElementById("ethics-and-safety").text
     let selTxt3 = document.querySelector('select#submj-select option:checked').text;
-    console.log(selTxt3);
+    return selTxt3;
 }
 
 updateList = function() {
@@ -33,15 +33,17 @@ updateList = function() {
     output.innerHTML = '<ul>'+children+'</ul>';
 }
 
-excelExport = function() {
-    let input = event.target;
+function processxl(callback) {
+    let input = document.getElementById('file');//event.target;
     let i,f;
+    let count_reader = 0;
     let info_list = new Array();
 
     for (i=0; i<input.files.length; ++i) {
         f = input.files[i];
         let reader = new FileReader();
         reader.onload = function(){
+
             let fileData = reader.result;
             let wb = XLSX.read(fileData, {type : 'array'});
             wb.SheetNames.forEach(function(sheetName){
@@ -51,13 +53,50 @@ excelExport = function() {
                 //console.log(info);
                 info_list.push(info);
             })
+            count_reader += 1;
+            if (count_reader == input.files.length) {
+                callback(info_list);
+            }
         };
         reader.readAsArrayBuffer(f);
     }
-    console.log(info_list);
-    console.log(Array.isArray(info_list));
-    return info_list;
 }
+
+function calculate(info_list) {
+    let list_for_jihun = new Array();
+    let others = new Array();
+    for (var k = 0; k < 4; ++k) {
+        others.push(0);
+    }
+    let course_codes = new Array();
+    list_for_jihun.push(others);
+    list_for_jihun.push(course_codes);
+
+    let major = "";
+
+    for (var i = 0; i < info_list.length; ++i){
+        if (info_list[i] != 0) {
+            major = info_list[i][0]["main_department"];
+            break;
+        }
+    }
+    
+    list_for_jihun[0][0] = major;
+    list_for_jihun[0][1] = submj();
+    list_for_jihun[0][2] = english();
+    list_for_jihun[0][3] = ethics();
+
+    for (var j = 0; j < info_list.length; ++j) {
+        if (info_list[j] == 0) {
+            continue;
+        }
+        for (var p = 0; p < (info_list[j].length-1); ++p) {
+            list_for_jihun[1].push(info_list[j][p+1]["subject_code"]);
+        }
+    }
+    console.log(list_for_jihun);
+}
+
 
 dataParser = function(rowObj) {
     let info = new Array();
