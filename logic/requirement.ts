@@ -244,19 +244,19 @@ const REQUIREMENT_LIST: Map<RequirementTypeJson, Requirement> = new Map([
   ])],
   [JSON.stringify(new RequirementType("인문사회선택", null, null, false)), new Requirement(21, [
     new ChooseCreditIn(12, null, [["인문사회선택", null]]),
-    // Missing handling for requiring >= 2 detailed classification
+    // 세부 과목구분 2개 이상 조건 없음
   ])],
   [JSON.stringify(new RequirementType("인문사회선택", null, null, true)), new Requirement(12, [
     new ChooseCreditIn(12, null, [["인문사회선택", null]]),
   ])],
   [JSON.stringify(new RequirementType("기초필수", null, null, null)), new Requirement(23, [
     new AllIn(null, [["기초필수", null]])
-    // Missing handling for PH171, PH172
+    // PH171, PH172 처리 없음
   ])],
 
   [JSON.stringify(new RequirementType(null, null, "자유융합전공", null)), new Requirement(12, [
     new ChooseCreditIn(12, null, [["전공선택", null], ["전공필수", null]]),
-    // Missing handling for excluding major department and requiring >= 2 departments
+    // 전공 학과 제외 및 2개 학과 이상 조건 없음
   ])],
 
   [JSON.stringify(new RequirementType("기초선택", "전산학부", null, false)), new Requirement(9, [
@@ -272,7 +272,7 @@ const REQUIREMENT_LIST: Map<RequirementTypeJson, Requirement> = new Map([
   ])],
   [JSON.stringify(new RequirementType(null, "전산학부", "심화전공", null)), new Requirement(12, [
     new ChooseCreditIn(12, "전산학부", [["전공선택", null]]),
-    // Missing handling for excluding 200 level courses
+    // 200대 과목 제외 조건 없음
   ])],
   [JSON.stringify(new RequirementType(null, "전산학부", "부전공", null)), new Requirement(21, [
     new ChooseCreditIn(15, "전산학부", [["전공필수", null]]),
@@ -281,8 +281,9 @@ const REQUIREMENT_LIST: Map<RequirementTypeJson, Requirement> = new Map([
   [JSON.stringify(new RequirementType(null, "전산학부", "복수전공", null)), new Requirement(40, [
     new AllIn("전산학부", [["전공필수", null]]),
     new ChooseCreditIn(21, "전산학부", [["전공선택", null]]),
-    // Missing handling for overlapping courses
+    // 중복 과목 처리 없음
   ])],
+  // 전산학 프로젝트 처리 없음
 
   [JSON.stringify(new RequirementType("기초선택", "전기및전자공학부", null, false)), new Requirement(9, [
     new ChooseNumFrom(2, ["MAS109", "MAS201", "MAS202"]),
@@ -312,7 +313,6 @@ const REQUIREMENT_LIST: Map<RequirementTypeJson, Requirement> = new Map([
     new ChooseCreditIn(25, "전기및전자공학부", [["전공필수", null], ["전공선택", null]]),
   ])],
 
-  // TODO: Fill remaining requirements
-  // Missing individual studies for elective major
-  // Probably missing more stuff
+  // 연구 과목 없음
+  // 빠트린 것이 더 많이 있을 확률 높음
 ]);
