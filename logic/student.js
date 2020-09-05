@@ -11,8 +11,8 @@ class Student {
         this.calculateMissingRequirements();
     }
     addRequirement(requirementType) {
-        let requirementTypeString = JSON.stringify(requirementType);
-        this.requirements.set(requirementTypeString, REQUIREMENT_LIST.get(requirementTypeString));
+        let requirementTypeJson = JSON.stringify(requirementType);
+        this.requirements.set(requirementTypeJson, REQUIREMENT_LIST.get(requirementTypeJson));
     }
     calculateRequirements() {
         let isDoubleMajor = this.extraType === "복수전공";
@@ -44,8 +44,8 @@ class Student {
         console.error('course not in requirement', course);
     }
     calculateMissingRequirements() {
-        for (let [requirementTypeString, requirement] of this.requirements) {
-            this.missingRequirements.set(requirementTypeString, requirement.normalized());
+        for (let [requirementTypeJson, requirement] of this.requirements) {
+            this.missingRequirements.set(requirementTypeJson, requirement.normalized());
         }
         for (let course of this.courses) {
             this.removeCourseFromMissingRequirements(course);

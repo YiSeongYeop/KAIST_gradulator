@@ -6,6 +6,16 @@ class RequirementType {
         this.forMajorOrExtra = forMajorOrExtra;
         this.isForDoubleMajor = isForDoubleMajor;
     }
+    static fromJson(json) {
+        let obj = JSON.parse(json);
+        return new RequirementType(obj.classification, obj.department, obj.forMajorOrExtra, obj.isForDoubleMajor);
+    }
+    toString() {
+        function f(str) {
+            return str === null ? "" : str;
+        }
+        return `${f(this.classification)} ${f(this.department)} ${f(this.forMajorOrExtra)}`.trim();
+    }
 }
 class RequiredCourse {
 }
@@ -55,13 +65,10 @@ class ChooseCreditFrom extends RequiredCourse {
 function getAllCoursesIn(department, classification) {
     let courses = [];
     for (let [courseNumber, course] of COURSE_LIST) {
-        if (course.classification === classification[0] && course.detailedClassification === classification[1]) {
-            if (department === null) {
-                courses.push(courseNumber);
-            }
-            else if (course.department === department) {
-                courses.push(courseNumber);
-            }
+        if ((department === null || (course.department === department)) &&
+            course.classification === classification[0] &&
+            (classification[1] === null || course.detailedClassification === classification[1])) {
+            courses.push(courseNumber);
         }
     }
     return courses;
@@ -126,8 +133,12 @@ class NormalizedRequirement {
         this.requiredCourses = requiredCourses;
     }
     removeCourse(course) {
+        if (this.credit <= 0) {
+            return false;
+        }
         for (let requiredCourse of this.requiredCourses) {
             if (requiredCourse.removeCourse(course) === true) {
+                this.credit -= COURSE_LIST.get(course).credit;
                 return true;
             }
         }

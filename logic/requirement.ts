@@ -18,9 +18,26 @@ class RequirementType {
     this.forMajorOrExtra = forMajorOrExtra;
     this.isForDoubleMajor = isForDoubleMajor;
   }
+
+  static fromJson(json: string): RequirementType {
+    let obj = JSON.parse(json);
+    return new RequirementType(
+      obj.classification,
+      obj.department,
+      obj.forMajorOrExtra,
+      obj.isForDoubleMajor,
+    );
+  }
+
+  toString() {
+    function f(str: string | null): string {
+      return str === null ? "" : str;
+    }
+    return `${f(this.classification)} ${f(this.department)} ${f(this.forMajorOrExtra)}`.trim();
+  }
 }
 
-type RequirementTypeString = string;
+type RequirementTypeJson = string;
 
 abstract class RequiredCourse {
   abstract normalized(): ChooseCreditFrom;
@@ -88,16 +105,16 @@ class ChooseCreditFrom extends RequiredCourse {
 
 function getAllCoursesIn(
   department: Department | null,
-  classification: [CourseClassification, DetailedCourseClassification],
+  classification: [CourseClassification, DetailedCourseClassification | null],
 ): Array<CourseNumber> {
   let courses: Array<CourseNumber> = [];
   for (let [courseNumber, course] of COURSE_LIST) {
-    if (course.classification === classification[0] && course.detailedClassification === classification[1]) {
-      if (department === null) {
-        courses.push(courseNumber);
-      } else if (course.department === department) {
-        courses.push(courseNumber);
-      }
+    if (
+      (department === null || (course.department === department)) &&
+      course.classification === classification[0] &&
+      (classification[1] === null || course.detailedClassification === classification[1])
+    ) {
+      courses.push(courseNumber);
     }
   }
   return courses;
@@ -106,12 +123,12 @@ function getAllCoursesIn(
 class ChooseNumIn extends RequiredCourse {
   num: number;
   department: Department | null;
-  classifications: Array<[CourseClassification, DetailedCourseClassification]>;
+  classifications: Array<[CourseClassification, DetailedCourseClassification | null]>;
   
   constructor(
     num: number,
     department: Department | null,
-    classifications: Array<[CourseClassification, DetailedCourseClassification]>,
+    classifications: Array<[CourseClassification, DetailedCourseClassification | null]>,
   ) {
     super();
     this.num = num;
@@ -131,12 +148,12 @@ class ChooseNumIn extends RequiredCourse {
 class ChooseCreditIn extends RequiredCourse {
   credit: number;
   department: Department | null;
-  classifications: Array<[CourseClassification, DetailedCourseClassification]>;
+  classifications: Array<[CourseClassification, DetailedCourseClassification | null]>;
   
   constructor(
     credit: number,
     department: Department | null,
-    classifications: Array<[CourseClassification, DetailedCourseClassification]>,
+    classifications: Array<[CourseClassification, DetailedCourseClassification | null]>,
   ) {
     super();
     this.credit = credit;
@@ -155,11 +172,11 @@ class ChooseCreditIn extends RequiredCourse {
 
 class AllIn extends RequiredCourse {
   department: Department | null;
-  classifications: Array<[CourseClassification, DetailedCourseClassification]>;
+  classifications: Array<[CourseClassification, DetailedCourseClassification | null]>;
   
   constructor(
     department: Department | null,
-    classifications: Array<[CourseClassification, DetailedCourseClassification]>,
+    classifications: Array<[CourseClassification, DetailedCourseClassification | null]>,
   ) {
     super();
     this.department = department;
@@ -200,8 +217,13 @@ class NormalizedRequirement {
   }
 
   removeCourse(course: CourseNumber): boolean {
+    if (this.credit <= 0) {
+      return false;
+    }
+
     for (let requiredCourse of this.requiredCourses) {
       if (requiredCourse.removeCourse(course) === true) {
+        this.credit -= (COURSE_LIST.get(course) as Course).credit;
         return true;
       }
     }
@@ -209,7 +231,7 @@ class NormalizedRequirement {
   }
 }
 
-const REQUIREMENT_LIST: Map<RequirementTypeString, Requirement> = new Map([
+const REQUIREMENT_LIST: Map<RequirementTypeJson, Requirement> = new Map([
   [JSON.stringify(new RequirementType("교양필수 (학점)", null, null, null)), new Requirement(7, [
     new AllIn(null, [["교양필수 (학점)", "영어"]]),
     new ChooseNumFrom(1, ["HSS001", "HSS002", "HSS003", "HSS004"]),

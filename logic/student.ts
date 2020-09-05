@@ -3,12 +3,12 @@ class Student {
   extraType: ExtraType;
   extraDepartment: Department | null;
   courses: Array<CourseNumber>;
-  requirements: Map<RequirementTypeString, Requirement>;
-  missingRequirements: Map<RequirementTypeString, NormalizedRequirement>;
+  requirements: Map<RequirementTypeJson, Requirement>;
+  missingRequirements: Map<RequirementTypeJson, NormalizedRequirement>;
 
   private addRequirement(requirementType: RequirementType) {
-    let requirementTypeString = JSON.stringify(requirementType);
-    this.requirements.set(requirementTypeString, REQUIREMENT_LIST.get(requirementTypeString) as Requirement);
+    let requirementTypeJson = JSON.stringify(requirementType);
+    this.requirements.set(requirementTypeJson, REQUIREMENT_LIST.get(requirementTypeJson) as Requirement);
   }
 
   private calculateRequirements() {
@@ -43,8 +43,8 @@ class Student {
   }
 
   private calculateMissingRequirements() {
-    for (let [requirementTypeString, requirement] of this.requirements) {
-      this.missingRequirements.set(requirementTypeString, requirement.normalized());
+    for (let [requirementTypeJson, requirement] of this.requirements) {
+      this.missingRequirements.set(requirementTypeJson, requirement.normalized());
     }
 
     for (let course of this.courses) {

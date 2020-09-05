@@ -19,7 +19,7 @@ type DetailedCourseClassification =
   "논술" | "영어" |
   "체육" | "인성 리더십" | "윤리 및 안전" | "봉사활동" | "즐거운 대학생활" | "신나는 대학생활" |
   "인문계열" | "사회계열" | "문학예술계열" |
-  null;
+  "";
 
 type CourseNumber = string;
 
@@ -490,7 +490,7 @@ for (let data of result.data) {
   COURSE_LIST.set(data["과목번호"], new Course(
     data["학과"],
     classification,
-    (data["세부 과목구분"] === "") ? null : data["세부 과목구분"],
+    data["세부 과목구분"],
     data["과목번호"],
     data["전산코드"],
     data["교과목명"],

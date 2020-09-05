@@ -443,5 +443,5 @@ for (let data of result.data) {
     if (data["이수요건 대체과목"] !== "") {
         substitutes = data["이수요건 대체과목"].split(",");
     }
-    COURSE_LIST.set(data["과목번호"], new Course(data["학과"], classification, (data["세부 과목구분"] === "") ? null : data["세부 과목구분"], data["과목번호"], data["전산코드"], data["교과목명"], credit, substitutes));
+    COURSE_LIST.set(data["과목번호"], new Course(data["학과"], classification, data["세부 과목구분"], data["과목번호"], data["전산코드"], data["교과목명"], credit, substitutes));
 }
