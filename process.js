@@ -23,6 +23,11 @@ submj = function(e) {
     return selTxt3;
 }
 
+subtype = function(e) {
+    let selTxt4 = document.querySelector('select#subtype-select option:checked').text;
+    return selTxt4;
+}
+
 updateList = function() {
     var input = document.getElementById('file');
     var output = document.getElementById('fileList');
@@ -38,6 +43,11 @@ function processxl(callback) {
     let i,f;
     let count_reader = 0;
     let info_list = new Array();
+
+    if (input.files.length == 0) {
+        alert("excel file not exist");
+        return;
+    } 
 
     for (i=0; i<input.files.length; ++i) {
         f = input.files[i];
@@ -65,7 +75,7 @@ function processxl(callback) {
 function calculate(info_list) {
     let list_for_jihun = new Array();
     let others = new Array();
-    for (var k = 0; k < 4; ++k) {
+    for (var k = 0; k < 5; ++k) {
         others.push(0);
     }
     let course_codes = new Array();
@@ -82,9 +92,11 @@ function calculate(info_list) {
     }
     
     list_for_jihun[0][0] = major;
-    list_for_jihun[0][1] = submj();
-    list_for_jihun[0][2] = english();
-    list_for_jihun[0][3] = ethics();
+    list_for_jihun[0][1] = subtype();
+    console.log(list_for_jihun[0][1]);
+    list_for_jihun[0][2] = submj();
+    list_for_jihun[0][3] = english();
+    list_for_jihun[0][4] = ethics();
 
     for (var j = 0; j < info_list.length; ++j) {
         if (info_list[j] == 0) {
@@ -94,7 +106,20 @@ function calculate(info_list) {
             list_for_jihun[1].push(info_list[j][p+1]["subject_code"]);
         }
     }
-    console.log(list_for_jihun);
+    //console.log(list_for_jihun);
+    let student = new Student(list_for_jihun[0][0], list_for_jihun[0][1],
+     list_for_jihun[0][2], list_for_jihun[1]);
+    console.table(student.requirements);
+    console.table(student.missingRequirements);
+    for (let [requirementTypeJson, normalizedRequirement] of student.missingRequirements) {
+      let requirementTypeString = RequirementType.fromJson(requirementTypeJson).toString();
+      console.log(`# ${requirementTypeString}`);
+      console.log(`Total ${normalizedRequirement.credit} credit required`);
+      console.log('Breakdown:');
+      for (let requiredCourse of normalizedRequirement.requiredCourses) {
+        console.log(`* ${requiredCourse.credit} credit required from ${requiredCourse.courses}`);
+      }
+    }
 }
 
 

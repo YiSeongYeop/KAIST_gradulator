@@ -2,10 +2,9 @@
 <html lang="kr">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=1.0, minimum-scale=0, user-scalable=no, target-densitydpi=medium-dpi" />
+	<meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=1.0, minimum-scale=0, user-scalable=no, target-densitydpi=medium-dpi"/>
 	<title>gradulator</title>
-	<style></style>
-	<link rel="stylesheet" href="process.css">
+	<link type="text/css" rel="stylesheet" href="process.css">
 	<script type="text/javascript" src="process.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.6/xlsx.min.js" integrity="sha512-X53zyt2zVcpa26yjS4j4nUzh6bEiymyqZ7zuZk6NoYqwZJcSzrScgtpsN1JPtcdROIhhnhBmtClj7eVe21qjyg==" crossorigin="anonymous"></script>
 </head>
@@ -53,8 +52,15 @@
 		</div>
 
 		<div class="item" id="sub-major">
-			<p id="text1">복부심자전공</p>
-			<select class="select-input" id="submj-select" name="submj" onchange="submj();">
+			<p id="submj-title">복부심자전공</p>
+			<select class="select-input" id="subtype-select" name="subtype">
+			    <option value="select">없음</option>
+			    <option value="yes">복수전공</option>
+			    <option value="no">부전공</option>
+			    <option value="yes">심화전공</option>
+			    <option value="no">자유융합전공</option>
+			</select>
+			<select class="select-input" id="submj-select" name="submj">
 			    <option value="select">없음</option>
 			    <option value="yes">건설 및 환경공학과</option>
 			    <option value="no">경영과학과</option>
@@ -79,7 +85,7 @@
 
 		<div class="item" id="english">
 			<p id="text1">영어 시험 (일반 기준점수/청각장애인 3급이상 기준점수)</p>
-			<select class="select-input" id="english-select" name="english" onchange="english()">
+			<select class="select-input" id="english-select" name="english">
 			    <option value="select">없음</option>
 			    <option value="yes">IBT TOFEL:83/62</option>
 			    <option value="no">PBT TOFEL:560/372</option>
@@ -92,7 +98,7 @@
 
 		<div class="item" id="ethics">
 		 	<p id="text1">윤리 및 안전</p>
-			<select class="select-input" id="ethics-select" name="ethics-and-safety" onchange="ethics();">
+			<select class="select-input" id="ethics-select" name="ethics-and-safety">
 			    <option value="select">선택</option>
 			    <option value="yes">예</option>
 			    <option value="no">아니오</option>
@@ -105,5 +111,10 @@
 			</span>
 		</button>
 	</div>
+
+	<script src="logic/papaparse.js"></script>
+    <script src="logic/course.js"></script>
+    <script src="logic/requirement.js"></script>
+    <script src="logic/student.js"></script>
 </body>
 </html>
