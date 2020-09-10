@@ -27,66 +27,74 @@
 	<div class="swiper-container">
 		<div class="swiper-wrapper">
 			<div class="swiper-slide">
-				<div id="kn" class="item">
-					<div class="name">교양 필수</div>
-					<div class="contents">
-						<img id="complete" src="img/complete.png" width="505" height="364">
+				<div class="item">
+					<div class="name">교양 필수(학)</div>
+					<div class="contents" id="kph_">
+
+					</div>
+				</div>
+			</div>
+			<div class="swiper-slide">
+				<div class="item">
+					<div class="name">교양 필수(AU)</div>
+					<div class="contents" id="kpa_">
+
 					</div>
 				</div>
 			</div>
 			<div class="swiper-slide">
 				<div id="kn" class="item">
 					<div class="name">인문사회 선택</div>
-					<div class="contents">
-						<img id="complete" src="img/complete.png" width="505" height="364">
+					<div class="contents" id="iss_">
+
 					</div>
 				</div>
 			</div>
 			<div class="swiper-slide">
 				<div id="kn" class="item">
 					<div class="name">기초 필수</div>
-					<div class="contents">
-						<img id="complete" src="img/complete.png" width="505" height="364">
+					<div class="contents" id="gp_">
+
 					</div>
 				</div>
 			</div>
 			<div class="swiper-slide">
 				<div id="kn" class="item">
 					<div class="name">기초 선택</div>
-					<div class="contents">
-						<img id="complete" src="img/complete.png" width="505" height="364">
+					<div class="contents" id="gs_">
+
 					</div>
 				</div>
 			</div>
 			<div class="swiper-slide">
 				<div id="kn" class="item">
-					<div class="name">전공 필수</div>
-					<div class="contents">
-						<img id="complete" src="img/complete.png" width="505" height="364">
+					<div class="name">주전공</div>
+					<div class="contents" id="mj_">
+
 					</div>
 				</div>
 			</div>
 			<div class="swiper-slide">
 				<div id="kn" class="item">
-					<div class="name">전공 선택</div>
-					<div class="contents">
-						<img id="complete" src="img/complete.png" width="505" height="364">
+					<div class="name">제2전공</div>
+					<div class="contents" id="smj_">
+
 					</div>
 				</div>
 			</div>
 			<div class="swiper-slide">
 				<div id="kn" class="item">
-					<div class="name">영어 시험</div>
-					<div class="contents">
-						<img id="complete" src="img/complete.png" width="505" height="364">
+					<div class="name" id="et">영어 시험</div>
+					<div class="contents" id="eng_test">
+
 					</div>
 				</div>
 			</div>
 			<div class="swiper-slide">
 				<div id="kn" class="item">
-					<div class="name">윤리 및 안전</div>
-					<div class="contents">
-						<img id="complete" src="img/complete.png" width="505" height="364">
+					<div class="name" id="ys">윤리 및 안전</div>
+					<div class="contents" id="ethics_safety">
+
 					</div>
 				</div>
 			</div>
@@ -101,14 +109,6 @@
 			<div class="swiper-slide">
 				<div id="kn" class="item">
 					<div class="name">영어 수업</div>
-					<div class="contents">
-						<img id="complete" src="img/complete.png" width="505" height="364">
-					</div>
-				</div>
-			</div>
-			<div class="swiper-slide">
-				<div id="kn" class="item">
-					<div class="name">AU</div>
 					<div class="contents">
 						<img id="complete" src="img/complete.png" width="505" height="364">
 					</div>
@@ -135,6 +135,10 @@
 		<div class="swiper-button-next"></div>
     	<div class="swiper-button-prev"></div>
 	</div>
+	<script src="logic/papaparse.js"></script>
+    <script src="logic/course.js"></script>
+    <script src="logic/requirement.js"></script>
+    <script src="logic/student.js"></script>
 	<script type="text/javascript" src="result.js"></script>
 </body>
 </html>

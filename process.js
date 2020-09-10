@@ -71,7 +71,7 @@ function processxl(callback) {
         reader.readAsArrayBuffer(f);
     }
 }
-
+let calculated_list = new Object();
 function calculate(info_list) {
     let list_for_jihun = new Array();
     let others = new Array();
@@ -93,7 +93,7 @@ function calculate(info_list) {
     
     list_for_jihun[0][0] = major;
     list_for_jihun[0][1] = subtype();
-    console.log(list_for_jihun[0][1]);
+    //console.log(list_for_jihun[0][1]);
     list_for_jihun[0][2] = submj();
     list_for_jihun[0][3] = english();
     list_for_jihun[0][4] = ethics();
@@ -109,17 +109,64 @@ function calculate(info_list) {
     //console.log(list_for_jihun);
     let student = new Student(list_for_jihun[0][0], list_for_jihun[0][1],
      list_for_jihun[0][2], list_for_jihun[1]);
-    console.table(student.requirements);
-    console.table(student.missingRequirements);
+    //console.table(student.requirements);
+    //console.table(student.missingRequirements);
+    //교필학/AU 인선 기필 기선 주전필 주전선 2전필 2전선 영시 윤안 인리 영수 논글 연구
+    //let calculated_list = new Array();
+    for (let [requirementTypeJson, normalizedRequirement] of student.requirements) {
+      let requirementTypeString = RequirementType.fromJson(requirementTypeJson).toString();
+      calculated_list[requirementTypeString+"_total"] = normalizedRequirement.credit;
+    }
     for (let [requirementTypeJson, normalizedRequirement] of student.missingRequirements) {
       let requirementTypeString = RequirementType.fromJson(requirementTypeJson).toString();
-      console.log(`# ${requirementTypeString}`);
-      console.log(`Total ${normalizedRequirement.credit} credit required`);
-      console.log('Breakdown:');
-      for (let requiredCourse of normalizedRequirement.requiredCourses) {
-        console.log(`* ${requiredCourse.credit} credit required from ${requiredCourse.courses}`);
-      }
+        calculated_list[requirementTypeString+"_req"] = normalizedRequirement.credit;
     }
+      // console.log(`# ${requirementTypeString}`);
+      // console.log(`Total ${normalizedRequirement.credit} credit required`);
+      // console.log('Breakdown:');
+      // for (let requiredCourse of normalizedRequirement.requiredCourses) {
+      //   console.log(`* ${requiredCourse.credit} credit required from ${requiredCourse.courses}`);
+      // }
+    if (list_for_jihun[0][3] == "없음") {
+        calculated_list["eng_test"] = 1;
+    }
+    else {
+        calculated_list["eng_test"] = 0;
+    }
+    if (list_for_jihun[0][4] == "아니오") {
+        calculated_list["ethics_safety"] = 1;
+    }
+    else {
+        calculated_list["ethics_safety"] = 0;
+    }
+    calculated_list["major"] = list_for_jihun[0][0];
+    if (list_for_jihun[0][1] == "없음") {
+        calculated_list["subtype"] = 1;
+    }
+    else {
+        calculated_list["subtype"] = list_for_jihun[0][1];
+    }
+    if (list_for_jihun[0][2] == "없음") {
+        calculated_list["submj"] = 1;
+    }
+    else {
+        calculated_list["submj"] = list_for_jihun[0][2];
+    }
+    //console.log(calculated_list)
+
+    var form = document.createElement('form');
+    form.setAttribute('method', 'post');
+    form.setAttribute('action', '/result');
+    document.charset = "utf-8";
+
+    var hiddenField = document.createElement('input');
+    hiddenField.setAttribute('type', 'hidden');
+    hiddenField.setAttribute('name', 'calculated_list');
+    hiddenField.setAttribute('value', JSON.stringify(calculated_list));
+    form.appendChild(hiddenField);
+
+    document.body.appendChild(form);
+    form.submit();
 }
 
 

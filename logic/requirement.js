@@ -157,7 +157,7 @@ const REQUIREMENT_LIST = new Map([
             new SpecificCourse("HSS091"),
         ])],
     [JSON.stringify(new RequirementType("인문사회선택", null, null, false)), new Requirement(21, [
-            new ChooseCreditIn(12, null, [["인문사회선택", null]]),
+            new ChooseCreditIn(21, null, [["인문사회선택", null]]),
         ])],
     [JSON.stringify(new RequirementType("인문사회선택", null, null, true)), new Requirement(12, [
             new ChooseCreditIn(12, null, [["인문사회선택", null]]),

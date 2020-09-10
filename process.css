@@ -253,6 +253,19 @@ a {
     overflow: auto;
 }
 
+#fileList::-webkit-scrollbar {
+    width: 10px;
+}
+
+#fileList::-webkit-scrollbar-thumb {
+    background-color: black;
+}
+
+#fileList::-webkit-scrollbar-track {
+    background-color: #191919;
+}
+
+
 .filebox input[type="file"] {
     position: absolute;
     width: 0;
